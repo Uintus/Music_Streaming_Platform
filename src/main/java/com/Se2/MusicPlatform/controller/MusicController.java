@@ -11,10 +11,10 @@ import java.util.List;
 
 @Controller
 public class MusicController {
-    @RequestMapping(value = "/navigate")
+    @RequestMapping(value = "/home")
     public String getNavigationBar() {
-        System.out.println("navigate okk");
-        return "components/NavigateBar";
+        System.out.println("home okk");
+        return "screens/HomePage";
 
     }
 }

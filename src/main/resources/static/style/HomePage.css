@@ -1,0 +1,274 @@
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #161719;
+}
+
+#container {
+  /* width: 100%;
+  height: 660px; */
+}
+
+.main {
+  width: 100%;
+  height: 660px;
+  border-width: 0.5px;
+  border-color: aliceblue;
+  border-style: solid;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+.navigate-bar {
+  width: 8%;
+  height: 100%;
+  border: 0.5px solid aliceblue;
+}
+.main-content {
+  margin-top: 2%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  /* border: 0.5px solid aliceblue; */
+}
+.mid {
+  width: 57%;
+  height: 100%;
+  /* border: 0.5px solid aliceblue; */
+  /* margin-left: 10%; */
+}
+.mid-text {
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.mid-top {
+  width: 100%;
+  height: 48%;
+  /* border: 0.5px solid aliceblue; */
+  /* margin-bottom: 10px; */
+  border-radius: 20px;
+  overflow: hidden;
+}
+.mid-bottom {
+  width: 100%;
+  height: 41%;
+  /* border: 0.5px solid aliceblue; */
+  overflow: auto;
+  scroll-padding: 10px;
+}
+.mid-bottom::-webkit-scrollbar {
+  width: 0em; /* Đặt chiều rộng của thanh cuộn */
+}
+.song {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: row;
+  /* border: 0.5px solid aliceblue; */
+  /* justify-content: center; */
+  align-items: center;
+  margin-bottom: 10px;
+}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* transform: scale(0.9);? */
+}
+
+.number {
+  color: #fff;
+  /* font-family: sans-serif; */
+  font-size: 22px;
+  /* font-style: normal; */
+  font-weight: lighter;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.song-img {
+  width: 70px;
+  height: 70px;
+  /* border: 0.5px solid aliceblue; */
+  margin-right: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+/* .img2 {
+    width: 100%;
+  height: 100%;
+  object-fit:contain;
+} */
+.song-infor {
+  /* border: 0.5px solid aliceblue; */
+  width: 45%;
+  height: 70%;
+  margin-right: 50px;
+}
+.song-name p {
+  color: white;
+  font-family: sans-serif;
+  font-size: 13.5px;
+  font-style: normal;
+  font-weight: 600;
+  margin: 0;
+}
+.song-artist p {
+  color: #9095a0;
+  font-family: sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  margin: 10px 0 0 0;
+}
+.song-time {
+  width: 10%;
+  height: 40%;
+  display: flex;
+  flex-direction: row;
+  /* border: 0.5px solid aliceblue; */
+  align-items: center;
+}
+.clock-img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  margin-right: 8px;
+}
+.time {
+  color: #bcc1ca;
+  font-family: sans-serif;
+  font-size: 15px;
+  font-style: normal;
+}
+.song-play {
+  width: 40px;
+  height: 40px;
+  /* border: 0.5px solid aliceblue; */
+  margin-left: 50px;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.fa-light.fa-circle-play {
+  color: #bcc1ca;
+  font-size: 35px;
+}
+
+.fa-light.fa-circle-play:hover {
+  color: #33c1c7;
+  font-size: 35px;
+  cursor: pointer;
+}
+
+.right {
+  width: 30%;
+  height: 100%;
+  /* border: 0.5px solid aliceblue; */
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+}
+.right-top {
+  width: 100%;
+  height: 20%;
+  /* border: 0.5px solid aliceblue; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  
+}
+.right-top p {
+    color: white;
+  font-size: 45px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+ 
+  margin: 12px 5px 5px 40px
+  
+}
+.line {
+    width: 100%;
+    height: 2px;
+    background-color: #33C1C7;
+    margin-bottom: 25px;
+}
+
+.right-bottom {
+    width: 100%;
+  height: 70%;
+  background-color: #1E1E1E;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.artist-img {
+    width: 40px;
+    height: 40px;
+}
+.rbottom-contain {
+    width: 90%;
+  height: 100%;
+  /* border: 0.5px solid aliceblue; */
+}
+.rbottom-contain > p {
+    color: white;
+  font-size: 23px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  margin-bottom: 27px;
+ 
+  /* margin: 12px 5px 5px 40px */
+}
+.artist-list {
+    width: 100%;
+    height: 77%;
+    /* border: 0.5px solid aliceblue; */
+    overflow: auto;
+}
+.artist-list::-webkit-scrollbar {
+    width: 0.5em;
+}
+.artist {
+    /* width: 100%;
+    height: 30%; */
+    /* border: 0.5px solid aliceblue; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 25px;
+    margin-left: 10px;
+}
+.artist-img {
+    width: 75px;
+    height: 75px;
+    /* border: 0.5px solid aliceblue; */
+    border-radius: 40px;
+    overflow: hidden;
+    margin-right: 20px;
+}
+.artist-name >p {
+    color: white;
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.artist-number {
+    /* margin-right: -50px; */
+    /* border: 0.5px solid aliceblue; */
+    margin-left: 40%;
+}
+.artist-number > p {
+    color: white;
+  font-size: 16px;
+  /* font-family: Arial, Helvetica, sans-serif; */
+}
+.play {
+}
