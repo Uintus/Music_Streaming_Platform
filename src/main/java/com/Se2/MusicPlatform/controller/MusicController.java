@@ -15,6 +15,29 @@ public class MusicController {
     public String getNavigationBar() {
         System.out.println("home okk");
         return "screens/HomePage";
-
     }
+    @RequestMapping(value = "/signup")
+    public String getSignUpPage() {
+        return "screens/SignUp";
+    }
+    @RequestMapping(value = "/signin")
+    public String getSignInPage() {
+        return "screens/SignIn";
+    }
+    @RequestMapping(value = "/lyrics")
+    public String getSongDetailPage() {
+        return "screens/SongDetailPage";
+    }
+
+    @RequestMapping(value = "/playlist")
+    public String getPlaylistPage() {
+        return "screens/PlaylistPage";
+    }
+
+    @RequestMapping(value = "/search")
+    public String getSearchPage() {
+        return "screens/SearchPage";
+    }
+
+
 }
