@@ -2,38 +2,30 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Employee List</title>
-    <link rel="stylesheet" type="text/css" href="resources/static/style/NavigateBar.css">
-<!--    <style>-->
-<!--        a {-->
-<!--            text-decoration: none;-->
-<!--        }-->
-<!--        table {-->
-<!--            width: 100%;-->
-<!--        }-->
-
-<!--        th, td {-->
-<!--            padding: 8px;-->
-<!--            text-align: left;-->
-<!--        }-->
-
-<!--        th {-->
-<!--            background-color: #f2f2f2;-->
-<!--        }-->
-
-<!--        img {-->
-<!--            max-width: 100px;-->
-<!--            height: auto;-->
-<!--        }-->
-
-<!--        h2{-->
-<!--           text-align : center;-->
-<!--        }-->
-<!--    </style>-->
+    <title>Song List</title>
 </head>
 <body>
-<div class="container">
-<p> hello </p>
+<div>
+    <h2>Song LIST</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Image</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        <tr th:each="song : ${songs}">
+            <td th:text="${song.song_id}"/>
+            <td th:text="${song.song_title}">
+            </td>
+            <td>
+                <img src="https://yt3.googleusercontent.com/v-fHSvLthvdRlrtXeEbWc1JtuKPa7yUeG668kRdxbX6XAxcw_rlhf8wjRGxht_oepo49SkwnXA=s900-c-k-c0x00ffffff-no-rj" width="100" height="100"/>
+            </td>
+            <td>UPDATE</td>
+            <td>DELETE</td>
+        </tr>
+    </table>
 </div>
 </body>
 </html>
