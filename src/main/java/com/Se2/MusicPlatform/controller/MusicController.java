@@ -1,6 +1,4 @@
 package com.Se2.MusicPlatform.controller;
-import com.Se2.MusicPlatform.model.Song;
-import com.Se2.MusicPlatform.repository.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,13 +11,10 @@ import java.util.List;
 
 @Controller
 public class MusicController {
+    @RequestMapping(value = "/home")
+    public String getNavigationBar() {
+        System.out.println("home okk");
+        return "screens/HomePage";
 
-    @Autowired
-    SongRepository songRepository;
-    @RequestMapping(value = "/navigate")
-    public String getNavigationBar(Model model) {
-        List<Song> songs = songRepository.findAll();
-        model.addAttribute("songs", songs);
-        return "components/NavigateBar";
     }
 }
