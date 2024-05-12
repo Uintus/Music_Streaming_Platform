@@ -1,0 +1,102 @@
+/* PLay song component*/
+.play {
+  /* border: 0.5px solid aliceblue; */
+  width: 100%;
+  height: 105px;
+  background-color: var(--component-color);
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  margin-top: 4px;
+}
+.play > img {
+  width: 75px;
+  height: 75px;
+  margin-left: 20px;
+  margin-right: 18px;
+}
+.play-title {
+  /* border: 0.5px solid aliceblue; */
+  width: 230px;
+  display: flex;
+  flex-direction: column;
+}
+
+.play-title .name {
+  margin: 0;
+  color : white;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 5px;
+}
+
+.play-title .artist {
+  margin: 0;
+  color : white;
+  font-size: 13px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.buttons {
+  width: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-right: 40px;
+}
+.buttons .left {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+}
+.buttons .mid {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+}
+.buttons .right {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+}
+
+.play-bar {
+  width: 700px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-right: 70px;
+}
+.time-start {
+
+  font-size: 15px;
+  color: var(--primary-color);
+  font-family: Arial, Helvetica, sans-serif;
+}
+.play-bar .time{
+
+  font-size: 15px;
+  color: var(--secondary-color);
+  font-family: Arial, Helvetica, sans-serif;
+}
+.duration {
+  /* border: 0.5px solid aliceblue; */
+  border-radius: 10px;
+  width: 550px;
+  height: 3px;
+  background-color: var(--secondary-color);
+}
+.play .items {
+  color: white;
+  /* margin-right: 20px; */
+  font-size: 23px;
+}
+.play .items i {
+  margin-right: 30px;
+}
+.play .items i:hover{
+  color: var(--primary-color);
+  cursor: pointer;
+}
