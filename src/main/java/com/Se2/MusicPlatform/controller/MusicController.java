@@ -31,9 +31,11 @@ public class MusicController {
         List<Singer> singers = singerRepository.findAll();
         Collections.shuffle(songs);
         List<Song> randomSongs = songs.subList(0, Math.min(songs.size(), 5));
+        Collections.shuffle(singers);
+        List<Singer> randomSingers = singers.subList(0, Math.min(singers.size(), 5));
 
         model.addAttribute("songs", randomSongs);
-        model.addAttribute("singers", singers);
+        model.addAttribute("singers", randomSingers);
         return "screens/HomePage";
     }
     @RequestMapping(value = "/signup")

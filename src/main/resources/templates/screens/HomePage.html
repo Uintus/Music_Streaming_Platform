@@ -65,16 +65,14 @@
                     <div class="rbottom-contain">
                         <p>Trending Artists</p>
                         <div class="artist-list">
-                            <div th:each="singer : ${singers}" class="artist">
+                            <div th:each="singer, singerStatus : ${singers}" class="artist">
                                 <div class="artist-img">
                                     <img th:src="${singer.image}" alt="Artist's image">
                                 </div>
                                 <div class="artist-name">
                                     <p th:text="${singer.name}"></p>
                                 </div>
-                                <div class="artist-number">
-                                    <p>01</p>
-                                </div>
+                                <div class="artist-number" th:text="${singerStatus.index + 1}"></div>
                             </div>
                         </div>
                     </div>
