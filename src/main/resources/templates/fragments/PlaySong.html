@@ -5,13 +5,12 @@
 
 </head>
 <body>
-<div th:fragment="play-song" class="play">
-    <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/white-and-blue-rock-music-album-cover-design-template-669d6b733ca7b8e20734de8eea1e67ea_screen.jpg?ts=1561485914"
-         alt="">
+<div th:fragment="play-song(song)" class="play">
+    <img th:src="${song.image}" alt="">
 
     <div class="play-title">
-        <p class="name">Fireflies</p>
-        <p class="artist">OwI City</p>
+        <p class="name" th:text="${song.song_title}"></p>
+        <p class="artist" th:text="${song.singer.name}"></p>
     </div>
 
     <div class="buttons">
@@ -23,7 +22,7 @@
     <div class="play-bar">
         <p class="time-start">1:02</p>
         <div class="duration"></div>
-        <p class="time">3:05</p>
+        <p class="time" th:text="${song.time}"></p>
     </div>
 
     <div class="items">

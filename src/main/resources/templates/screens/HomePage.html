@@ -46,7 +46,7 @@
                             <p class="time" th:text="${song.time}"></p>
                         </div>
                         <div class="song-play">
-                            <i class="fa-light fa-circle-play"></i>
+                            <i class="fa-light fa-circle-play" id="song-play-btn"></i>
                         </div>
                     </div>
                 </div>
@@ -83,7 +83,8 @@
 
 
     <!-- the part of PlaySong-->
-        <div th:replace="fragments/PlaySong :: play-song" class="play"></div>
+    <div th:replace="fragments/PlaySong :: play-song(song=${songs.get(0)})"></div>
+
 
 </div>
 </body>

@@ -36,6 +36,10 @@ public class MusicController {
 
         model.addAttribute("songs", randomSongs);
         model.addAttribute("singers", randomSingers);
+        if (!randomSongs.isEmpty()) {
+            Song firstSong = randomSongs.get(0);
+            model.addAttribute("firstSong", firstSong);
+        }
         return "screens/HomePage";
     }
     @RequestMapping(value = "/signup")
