@@ -11,12 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class MusicController {
 
     @Autowired
     SongRepository songRepository;
+    @Autowired
+    SingerRepository singerRepository;
 
     @RequestMapping(value = "/")
     public String homePage(){
@@ -25,10 +28,12 @@ public class MusicController {
     @RequestMapping(value = "/home")
     public String getNavigationBar(Model model) {
         List<Song> songs = songRepository.findAll();
+        List<Singer> singers = singerRepository.findAll();
         Collections.shuffle(songs);
         List<Song> randomSongs = songs.subList(0, Math.min(songs.size(), 5));
 
         model.addAttribute("songs", randomSongs);
+        model.addAttribute("singers", singers);
         return "screens/HomePage";
     }
     @RequestMapping(value = "/signup")

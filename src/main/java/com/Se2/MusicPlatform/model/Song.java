@@ -12,8 +12,10 @@ public class Song {
     private String lyric;
     private String image;
     private String time;
-    private int singer_id;
 
+    @ManyToOne
+    @JoinColumn(name = "singer_id")
+    private Singer singer;
     public Long getSong_id() {
         return song_id;
     }
@@ -54,11 +56,11 @@ public class Song {
         this.time = time;
     }
 
-    public int getSinger_id() {
-        return singer_id;
+    public Singer getSinger() {
+        return singer;
     }
 
-    public void setSinger_id(int singer_id) {
-        this.singer_id = singer_id;
+    public void setSinger(Singer singer) {
+        this.singer = singer;
     }
 }
