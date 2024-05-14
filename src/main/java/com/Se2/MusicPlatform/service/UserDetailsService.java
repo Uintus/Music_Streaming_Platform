@@ -1,4 +1,4 @@
-package SE2.MusicWebApp.service;
+package com.Se2.MusicPlatform.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
