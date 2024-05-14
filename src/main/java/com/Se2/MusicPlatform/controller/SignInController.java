@@ -34,7 +34,7 @@ public class SignInController {
             // Authenticate user
             authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                    authenticationRequest.getUsername(),
+                    authenticationRequest.getName(),
                     authenticationRequest.getPassword()
                 )
             );
