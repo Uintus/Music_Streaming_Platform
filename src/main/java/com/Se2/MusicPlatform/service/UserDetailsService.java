@@ -6,8 +6,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import SE2.MusicWebApp.model.User;
-import SE2.MusicWebApp.repository.UserRepository;
+import com.Se2.MusicPlatform.model.User;
+import com.Se2.MusicPlatform.repository.UserRepository;
 
 @Service
 public class UserDetailsService {
