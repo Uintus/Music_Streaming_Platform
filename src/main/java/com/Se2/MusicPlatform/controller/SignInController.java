@@ -1,4 +1,4 @@
-package SE2.MusicWebApp.controller;
+package com.Se2.MusicPlatform.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
