@@ -10,12 +10,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import com.Se2.MusicPlatform.model.User;
-import com.Se2.MusicPlatform.model.Account;
+
 import com.Se2.MusicPlatform.model.AuthenticationRequest;
 import com.Se2.MusicPlatform.model.AuthenticationResponse;
 import com.Se2.MusicPlatform.model.JwtUtil;
-import com.Se2.MusicPlatform.service.UserDetailsService;
+import com.Se2.MusicPlatform.service.AccountDetailsService;
 
 @RestController
 public class SignInController {
@@ -27,7 +26,7 @@ public class SignInController {
     private JwtUtil jwtUtil;
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private AccountDetailsService accountDetailsService;
 
     @PostMapping("/api/signin")
     public ResponseEntity<?> signIn(@RequestBody AuthenticationRequest authenticationRequest) {
@@ -43,8 +42,10 @@ public class SignInController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect username or password");
         }
 
+        // Load account details
+        UserDetails userDetails = accountDetailsService.loadAccountById(authenticationRequest.getId());
+
         // Generate JWT token
-        UserDetails userDetails = userDetailsService.loadUserByName(authenticationRequest.getName());
         String jwt = jwtUtil.generateToken(userDetails);
 
         // Return JWT token
