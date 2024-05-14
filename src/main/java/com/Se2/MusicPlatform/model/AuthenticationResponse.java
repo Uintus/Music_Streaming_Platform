@@ -1,4 +1,4 @@
-package SE2.MusicWebApp.model;
+package com.Se2.MusicPlatform.model;
 
 public class AuthenticationResponse {
     
