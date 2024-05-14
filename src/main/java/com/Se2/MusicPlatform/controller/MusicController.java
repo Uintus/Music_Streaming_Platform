@@ -45,9 +45,15 @@ public class MusicController {
 
     @GetMapping("/playSong/{songId}")
     public String getPlaySongSection(@PathVariable("songId") Long songId, Model model) {
-        Optional<Song> song = songRepository.findById(songId);
-        model.addAttribute("song", song);
-        return "fragments/PlaySong :: play-song(song=${song})"; // Note the change to dynamically pass the song object
+        Optional<Song> songOptional = songRepository.findById(songId);
+        if (songOptional.isPresent()) {
+            Song song = songOptional.get();
+            model.addAttribute("song", song);
+        } else {
+            // Handle the case where the song with the given id is not found
+            return "error";
+        }
+        return "fragments/PlaySong :: play-song";
     }
 
     @RequestMapping(value = "/signup")
