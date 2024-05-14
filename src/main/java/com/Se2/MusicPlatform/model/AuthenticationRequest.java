@@ -2,13 +2,13 @@ package com.Se2.MusicPlatform.model;
 
 public class AuthenticationRequest {
     
-    private String username;
+    private String name;
     private String password;
-    public String getUsername() {
+    public String getName() {
         return username;
     }
-    public void setUsername(String username) {
-        this.username = username;
+    public void setName(String name) {
+        this.name = name;
     }
     public String getPassword() {
         return password;
