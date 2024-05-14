@@ -44,7 +44,7 @@ public class SignInController {
         }
 
         // Generate JWT token
-        UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getName());
+        UserDetails userDetails = userDetailsService.loadUserByName(authenticationRequest.getName());
         String jwt = jwtUtil.generateToken(userDetails);
 
         // Return JWT token
