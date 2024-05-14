@@ -15,10 +15,8 @@ const getSongById = (id) => {
   return null; // Trả về null nếu không tìm thấy id trong mảng songs
 };
 
-/** GET SONG FROM DATA 15 SONGS */
-let songIdElement = document.getElementById("songId");
-let songId = parseInt(songIdElement.innerText);
-
+/** GET SONG FROM DATA 15 SONGS BY ID HERE!!!*/
+let songId = 1;
 let music = new Audio(getSongById(songId));
 
 // play/pause
@@ -26,15 +24,22 @@ let masterPlay = document.getElementById("masterPlay");
 let wave = document.getElementsByClassName("wave")[0];
 
 masterPlay.addEventListener("click", () => {
-  if (music.paused || music.currentTime <= 0) {
-    music.play();
-    masterPlay.src = "/img/pause.png";
-    wave.classList.add("active2");
-  } else {
+  if (!songId){
     music.pause();
     masterPlay.src = "/img/play.png";
     wave.classList.remove("active2");
   }
+  else if (music.paused || music.currentTime <= 0 ) {
+    music.play();
+    masterPlay.src = "/img/pause.png";
+    wave.classList.add("active2");
+  }else{
+    music.pause();
+    masterPlay.src = "/img/play.png";
+    wave.classList.remove("active2");
+  }
+
+
 });
 
 let currentStart = document.getElementById("currentStart");

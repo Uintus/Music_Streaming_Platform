@@ -21,9 +21,16 @@ public class MusicController {
     @Autowired
     SingerRepository singerRepository;
 
+
+    @RequestMapping(value = "/main")
+    public String getMainPage(Model model){
+        return "screens/MainPage";
+    }
+
+
     @RequestMapping(value = "/")
     public String homePage(){
-        return "redirect:/home";
+        return "redirect:/main";
     }
     @RequestMapping(value = "/home")
     public String getNavigationBar(Model model) {
