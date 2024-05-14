@@ -1,4 +1,4 @@
-package com.Se2.MusicPlatform.controller;
+'package com.Se2.MusicPlatform.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -43,7 +43,7 @@ public class SignInController {
         }
 
         // Generate JWT token
-        UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
+        UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getName());
         String jwt = jwtUtil.generateToken(userDetails);
 
         // Return JWT token
