@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import SE2.MusicWebApp.model.AuthenticationRequest;
-import SE2.MusicWebApp.model.AuthenticationResponse;
-import SE2.MusicWebApp.model.JwtUtil;
-import SE2.MusicWebApp.service.UserDetailsService;
+import com.Se2.MusicPlatform.model.AuthenticationRequest;
+import com.Se2.MusicPlatform.model.AuthenticationResponse;
+import com.Se2.MusicPlatform.model.JwtUtil;
+import com.Se2.MusicPlatform.service.UserDetailsService;
 
 @RestController
 public class SignInController {
