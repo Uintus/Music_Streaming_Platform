@@ -1,4 +1,4 @@
-package SE2.MusicWebApp.model;
+package com.Se2.MusicPlatform.model;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
