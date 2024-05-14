@@ -6,6 +6,15 @@
 </head>
 <body>
 <div th:fragment="play-song" class="play">
+    <!-- enter song infor here to play that song-->
+    <p id="songId">1</p>
+
+    <div class="wave">
+        <div class="wave1"></div>
+        <div class="wave1"></div>
+        <div class="wave1"></div>
+        <div class="wave1"></div>
+    </div>
     <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/white-and-blue-rock-music-album-cover-design-template-669d6b733ca7b8e20734de8eea1e67ea_screen.jpg?ts=1561485914"
          alt="">
 
@@ -15,21 +24,33 @@
     </div>
 
     <div class="buttons">
-        <img src="/img/next-button.png" alt="" class="left">
-        <img src="/img/play.png" alt="" class="mid">
-        <img src="/img/next-button.png" alt="" class="right">
+        <img src="/img/next-button.png" alt="" class="left" >
+        <img src="/img/play.png" alt="" class="mid" id="masterPlay">
+        <img src="/img/next-button.png" alt="" class="right" id="next">
     </div>
 
     <div class="play-bar">
-        <p class="time-start">1:02</p>
-        <div class="duration"></div>
-        <p class="time">3:05</p>
+        <p class="time-start" id="currentStart">-:--</p>
+
+        <div class="bar">
+            <input type="range" class="duration" id="seek" min="0" value="0" max="100">
+            <div class="bar2" id="bar2"></div>
+            <div class="dot" ></div>
+        </div>
+
+        <p class="time" id="currentEnd">-:--</p>
     </div>
 
     <div class="items">
-        <i class="fa-sharp fa-solid fa-list-ul"></i>
-        <i class="fa-sharp fa-regular fa-circle-plus"></i>
+        <a href="/lyrics" style="text-decoration: none; color: inherit">
+            <i class="fa-sharp fa-solid fa-list-ul"></i>
+        </a>
+        <a style="text-decoration: none; color: inherit">
+            <i class="fa-sharp fa-regular fa-circle-plus"></i>
+        </a>
+
     </div>
+
 
 </div>
 
