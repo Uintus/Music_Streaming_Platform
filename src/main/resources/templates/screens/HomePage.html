@@ -1,21 +1,9 @@
-<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomePage</title>
-    <link rel="stylesheet" href="/style/HomePage.css">
-    <link rel="stylesheet" href="/fonts/fontawesome6.css">
-    <link rel="stylesheet" href="/fonts/all.min.css">
-    <link rel="shortcut icon" href="/img/logo-_1_.ico" type="image/x-icon">
-</head>
 
-<body>
 <div id="container">
     <!-- the part except PlaySong-->
     <div class="main">
-        <div th:replace="fragments/NavigateBar :: navbar" class="navigate-bar"></div>
 
         <div class="main-content">
             <!-- middle part-->
@@ -46,7 +34,10 @@
                             <p class="time" th:text="${song.time}"></p>
                         </div>
                         <div class="song-play">
-                            <i class="fa-light fa-circle-play"></i>
+                            <div class="song-play">
+                                <i class="fa-light fa-circle-play" th:attr="data-song-id=${song.song_id}"
+                                   onclick="changeSong(this.getAttribute('data-song-id'))"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -80,12 +71,5 @@
             </div>
         </div>
     </div>
-
-
-    <!-- the part of PlaySong-->
-        <div th:replace="fragments/PlaySong :: play-song" class="play"></div>
-
 </div>
-</body>
 
-</html>

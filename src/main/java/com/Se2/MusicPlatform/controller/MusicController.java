@@ -19,9 +19,16 @@ public class MusicController {
     @Autowired
     SingerRepository singerRepository;
 
+
+    @RequestMapping(value = "/main")
+    public String getMainPage(Model model){
+        return "screens/MainPage";
+    }
+
+
     @RequestMapping(value = "/")
     public String homePage(){
-        return "redirect:/home";
+        return "redirect:/main";
     }
     @RequestMapping(value = "/home")
     public String getNavigationBar(Model model) {
@@ -34,8 +41,26 @@ public class MusicController {
 
         model.addAttribute("songs", randomSongs);
         model.addAttribute("singers", randomSingers);
+        if (!randomSongs.isEmpty()) {
+            Song firstSong = randomSongs.get(0);
+            model.addAttribute("firstSong", firstSong);
+        }
         return "screens/HomePage";
     }
+
+    @GetMapping("/playSong/{songId}")
+    public String getPlaySongSection(@PathVariable("songId") Long songId, Model model) {
+        Optional<Song> songOptional = songRepository.findById(songId);
+        if (songOptional.isPresent()) {
+            Song song = songOptional.get();
+            model.addAttribute("song", song);
+        } else {
+            // Handle the case where the song with the given id is not found
+            return "error";
+        }
+        return "fragments/PlaySong :: play-song";
+    }
+
     @RequestMapping(value = "/signup")
     public String getSignUpPage() {
         return "screens/SignUp";
