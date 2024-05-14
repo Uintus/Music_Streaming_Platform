@@ -7,28 +7,29 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import com.Se2.MusicPlatform.model.User;
+
 import com.Se2.MusicPlatform.model.Account;
-import com.Se2.MusicPlatform.repository.UserRepository;
+import com.Se2.MusicPlatform.repository.AccountRepository;
+
 @RestController
 public class SignUpController {
 
     @Autowired
-    private UserRepository userRepository;
+    private AccountRepository accountRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @PostMapping("/api/signup")
-    public ResponseEntity<String> signUp(@RequestBody User user) {
+    public ResponseEntity<String> signUp(@RequestBody Account account) {
         // Check if username or email already exists
-        if (userRepository.existsByName(user.getName())) {
+        if (accountRepository.findById(account.getId()) != null) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Username already exists");
         }
         // Encrypt password
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        account.setPassword(passwordEncoder.encode(account.getPassword()));
         // Save user to database
-        userRepository.save(user);
+        accountRepository.save(account);
         return ResponseEntity.ok("User registered successfully");
     }
 }
