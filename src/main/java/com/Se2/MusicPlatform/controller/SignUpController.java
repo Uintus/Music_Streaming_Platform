@@ -21,8 +21,8 @@ public class SignUpController {
     @PostMapping("/api/signup")
     public ResponseEntity<String> signUp(@RequestBody User user) {
         // Check if username or email already exists
-        if (userRepository.existsByUsername(user.getName()) || userRepository.existsByEmail(user.getEmail())) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("Username or email already exists");
+        if (userRepository.existsByName(user.getName())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Username already exists");
         }
         // Encrypt password
         user.setPassword(passwordEncoder.encode(user.getPassword()));
