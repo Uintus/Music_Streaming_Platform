@@ -5,9 +5,9 @@
 
 </head>
 <body>
-<div th:fragment="play-song" class="play">
+<div th:fragment="play-song(song)" class="play">
     <!-- enter song infor here to play that song-->
-    <p id="songId">1</p>
+    <p id="songId">${song.id}</p>
 
     <div class="wave">
         <div class="wave1"></div>
@@ -15,12 +15,12 @@
         <div class="wave1"></div>
         <div class="wave1"></div>
     </div>
-    <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/white-and-blue-rock-music-album-cover-design-template-669d6b733ca7b8e20734de8eea1e67ea_screen.jpg?ts=1561485914"
+    <img th:src="${song.image}"
          alt="">
 
     <div class="play-title">
-        <p class="name">Fireflies</p>
-        <p class="artist">OwI City</p>
+        <p class="name" th:text="${song.song_title}"></p>
+        <p class="artist" th:text="${song.singer.name}"></p>
     </div>
 
     <div class="buttons">

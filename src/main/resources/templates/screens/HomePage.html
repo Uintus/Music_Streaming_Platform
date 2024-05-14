@@ -29,98 +29,29 @@
                 <p class="mid-text">Popular Tracks</p>
 
                 <div class="mid-bottom">
-                    <div class="song">
-                        <div class="number">01</div>
+                    <div th:each="song, songStatus : ${songs}" class="song">
+                        <div class="number" th:text="${songStatus.index + 1}"></div>
                         <div class="song-img">
-                            <img class="img2" src="/img/taylor2.jpg" alt="singer">
+                            <img class="img2" th:src="${song.image}" alt="singer">
                         </div>
                         <div class="song-infor">
                             <div class="song-name">
-                                <p>Fire (feat. YUQI ((G)I-DLE), JVKE)</p>
+                                <p th:text="${song.song_title}"></p>
                             </div>
                             <div class="song-artist">
-                                <p>Alan Walker, YUQI, JVKE, (G)I-DLE</p>
+                                <p th:text="${song.singer.name}"></p>
                             </div>
                         </div>
                         <div class="song-time">
                             <img class="clock-img" src="/img/clock.png" alt="clock">
-                            <p class="time">2:03</p>
+                            <p class="time" th:text="${song.time}"></p>
                         </div>
                         <div class="song-play">
-                            <!-- <img src="/img/play-button.png" alt="play"> -->
-                            <i class="fa-light fa-circle-play"></i>
+                            <div class="song-play">
+                                <i class="fa-light fa-circle-play" th:attr="data-song-id=${song.song_id}" onclick="changeSong(this.getAttribute('data-song-id'))"></i>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="song">
-                        <div class="number">02</div>
-                        <div class="song-img">
-                            <img class="img2" src="/img/taylor2.jpg" alt="singer">
-                        </div>
-                        <div class="song-infor">
-                            <div class="song-name">
-                                <p>Fire (feat. YUQI ((G)I-DLE), JVKE)</p>
-                            </div>
-                            <div class="song-artist">
-                                <p>Alan Walker, YUQI, JVKE, (G)I-DLE</p>
-                            </div>
-                        </div>
-                        <div class="song-time">
-                            <img class="clock-img" src="/img/clock.png" alt="clock">
-                            <p class="time">2:03</p>
-                        </div>
-                        <div class="song-play">
-                            <!-- <img src="/img/play-button.png" alt="play"> -->
-                            <i class="fa-light fa-circle-play"></i>
-                        </div>
-                    </div>
-
-                    <div class="song">
-                        <div class="number">03</div>
-                        <div class="song-img">
-                            <img class="img2" src="/img/taylor2.jpg" alt="singer">
-                        </div>
-                        <div class="song-infor">
-                            <div class="song-name">
-                                <p>Fire (feat. YUQI ((G)I-DLE), JVKE)</p>
-                            </div>
-                            <div class="song-artist">
-                                <p>Alan Walker, YUQI, JVKE, (G)I-DLE</p>
-                            </div>
-                        </div>
-                        <div class="song-time">
-                            <img class="clock-img" src="/img/clock.png" alt="clock">
-                            <p class="time">2:03</p>
-                        </div>
-                        <div class="song-play">
-                            <!-- <img src="/img/play-button.png" alt="play"> -->
-                            <i class="fa-light fa-circle-play"></i>
-                        </div>
-                    </div>
-
-                    <div class="song">
-                        <div class="number">04</div>
-                        <div class="song-img">
-                            <img class="img2" src="/img/taylor2.jpg" alt="singer">
-                        </div>
-                        <div class="song-infor">
-                            <div class="song-name">
-                                <p>Fire (feat. YUQI ((G)I-DLE), JVKE)</p>
-                            </div>
-                            <div class="song-artist">
-                                <p>Alan Walker, YUQI, JVKE, (G)I-DLE</p>
-                            </div>
-                        </div>
-                        <div class="song-time">
-                            <img class="clock-img" src="/img/clock.png" alt="clock">
-                            <p class="time">2:03</p>
-                        </div>
-                        <div class="song-play">
-                            <!-- <img src="/img/play-button.png" alt="play"> -->
-                            <i class="fa-light fa-circle-play"></i>
-                        </div>
-                    </div>
-
                 </div>
             </div>
 
@@ -137,359 +68,45 @@
                     <div class="rbottom-contain">
                         <p>Trending Artists</p>
                         <div class="artist-list">
-                            <div class="artist">
+                            <div th:each="singer, singerStatus : ${singers}" class="artist">
                                 <div class="artist-img">
-                                    <img src="https://cdn.tuoitre.vn/zoom/700_700/471584752817336320/2023/4/25/son-tung-1682429100141711717000-181-0-1080-1717-crop-16824291249331603053151.jpg"
-                                         alt="Son Tung's image">
+                                    <img th:src="${singer.image}" alt="Artist's image">
                                 </div>
                                 <div class="artist-name">
-                                    <p>Son Tung Mtp</p>
+                                    <p th:text="${singer.name}"></p>
                                 </div>
-                                <div class="artist-number">
-                                    <p>01</p>
-                                </div>
-
-                            </div>
-                            <div class="artist">
-                                <div class="artist-img">
-                                    <img src="https://cdn.tuoitre.vn/zoom/700_700/471584752817336320/2023/4/25/son-tung-1682429100141711717000-181-0-1080-1717-crop-16824291249331603053151.jpg"
-                                         alt="Son Tung's image">
-                                </div>
-                                <div class="artist-name">
-                                    <p>Son Tung Mtp</p>
-                                </div>
-                                <div class="artist-number">
-                                    <p>01</p>
-                                </div>
-
-                            </div>
-                            <div class="artist">
-                                <div class="artist-img">
-                                    <img src="https://cdn.tuoitre.vn/zoom/700_700/471584752817336320/2023/4/25/son-tung-1682429100141711717000-181-0-1080-1717-crop-16824291249331603053151.jpg"
-                                         alt="Son Tung's image">
-                                </div>
-                                <div class="artist-name">
-                                    <p>Son Tung Mtp</p>
-                                </div>
-                                <div class="artist-number">
-                                    <p>02</p>
-                                </div>
-
-                            </div>
-                            <div class="artist">
-                                <div class="artist-img">
-                                    <img src="https://cdn.tuoitre.vn/zoom/700_700/471584752817336320/2023/4/25/son-tung-1682429100141711717000-181-0-1080-1717-crop-16824291249331603053151.jpg"
-                                         alt="Son Tung's image">
-                                </div>
-                                <div class="artist-name">
-                                    <p>Son Tung Mtp</p>
-                                </div>
-                                <div class="artist-number">
-                                    <p>03</p>
-                                </div>
-
-                            </div>
-                            <div class="artist">
-                                <div class="artist-img">
-                                    <img src="https://cdn.tuoitre.vn/zoom/700_700/471584752817336320/2023/4/25/son-tung-1682429100141711717000-181-0-1080-1717-crop-16824291249331603053151.jpg"
-                                         alt="Son Tung's image">
-                                </div>
-                                <div class="artist-name">
-                                    <p>Son Tung Mtp</p>
-                                </div>
-                                <div class="artist-number">
-                                    <p>04</p>
-                                </div>
-
+                                <div class="artist-number" th:text="${singerStatus.index + 1}"></div>
                             </div>
                         </div>
-
-
                     </div>
-
-
                 </div>
             </div>
         </div>
     </div>
 
-
     <!-- the part of PlaySong-->
-    <div th:replace="fragments/PlaySong :: play-song" class="play"></div>
-    <script>"use strict";
+    <div th:replace="fragments/PlaySong :: play-song(song=${songs.get(0)})"></div>
 
-const songs = [
-  { id: 0, src: "/audio/Solo.mp3" },
-  { id: 1, src: "/audio/Chungtakhongthuocvenhau.mp3" },
-  { id: 2, src: "/audio/Solo.mp3" },
-];
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function changeSong(songId) {
+            console.log("Change song function called with ID:", songId);
 
-const getSongById = (id) => {
-  for (var i = 0; i < songs.length; i++) {
-    if (songs[i].id === id) {
-      return songs[i].src;
-    }
-  }
-  return null; // Trả về null nếu không tìm thấy id trong mảng songs
-};
-
-/** GET SONG FROM DATA 15 SONGS */
-let songIdElement = document.getElementById("songId");
-let songId = parseInt(songIdElement.innerText);
-
-let music = new Audio(getSongById(songId));
-
-// play/pause
-let masterPlay = document.getElementById("masterPlay");
-let wave = document.getElementsByClassName("wave")[0];
-
-masterPlay.addEventListener("click", () => {
-  if (music.paused || music.currentTime <= 0) {
-    music.play();
-    masterPlay.src = "/img/pause.png";
-    wave.classList.add("active2");
-  } else {
-    music.pause();
-    masterPlay.src = "/img/play.png";
-    wave.classList.remove("active2");
-  }
-});
-
-let currentStart = document.getElementById("currentStart");
-let currentEnd = document.getElementById("currentEnd");
-let seek = document.getElementById("seek");
-let bar2 = document.getElementById("bar2");
-let dot = document.getElementsByClassName("dot")[0];
-
-music.addEventListener("timeupdate", () => {
-  //time
-  let music_curr = music.currentTime;
-
-  let music_dur = music.duration;
-
-  let min = Math.floor(music_dur / 60);
-  let sec = Math.floor(music_dur % 60);
-  if (sec < 10) {
-    sec = `0${sec}`;
-  }
-  currentEnd.innerText = `${min}:${sec}`;
-
-  let min1 = Math.floor(music_curr / 60);
-  let sec1 = Math.floor(music_curr % 60);
-  if (sec1 < 10) {
-    sec1 = `0${sec1}`;
-  }
-
-  currentStart.innerText = `${min1}:${sec1}`;
-
-  // bar
-  let progressbar = parseInt((music.currentTime / music.duration) * 100);
-  seek.value = progressbar;
-  let seekbar = seek.value;
-
-  // Giá trị trung gian
-  let currentSeekbar = parseInt(bar2.style.width) || 0;
-
-  // Tính toán khoảng cách di chuyển
-  let distance = seekbar - currentSeekbar;
-  let step = Math.abs(distance) / 10; // Chia khoảng cách thành 10 bước
-
-  // Xác định hướng di chuyển
-  let direction = distance > 0 ? 1 : -1;
-
-  // Cập nhật vị trí và độ dài
-  function updateSeekbar() {
-    currentSeekbar += step * direction;
-
-    if (
-      (direction === 1 && currentSeekbar >= seekbar) ||
-      (direction === -1 && currentSeekbar <= seekbar)
-    ) {
-      currentSeekbar = seekbar;
-    } else {
-      requestAnimationFrame(updateSeekbar);
-    }
-
-    bar2.style.width = `${currentSeekbar}%`;
-    dot.style.left = `${currentSeekbar}%`;
-  }
-
-  updateSeekbar();
-
-  //skip bar
-  seek.addEventListener("change", () => {
-    music.currentTime = (seek.value * music.duration) / 100;
-  });
-
-  music.addEventListener("ended", () => {
-    masterPlay.src = "/img/pause.png";
-    masterPlay.src = "/img/play.png";
-    wave.classList.remove("active2");
-  });
-});
-
-//skip song
-let back = document.getElementsByClassName("left")[0];
-let next = document.getElementById("next");
-
-back.addEventListener("click", () => {
-  if (songId === 0) {
-    songId = songId;
-  } else {
-    songId = songId - 1;
-  }
-
-  music.pause();
-  music = new Audio(getSongById(songId));
-  music.play();
-  music.addEventListener("timeupdate", () => {
-    //time
-    let music_curr = music.currentTime;
-
-    let music_dur = music.duration;
-
-    let min = Math.floor(music_dur / 60);
-    let sec = Math.floor(music_dur % 60);
-    if (sec < 10) {
-      sec = `0${sec}`;
-    }
-    currentEnd.innerText = `${min}:${sec}`;
-
-    let min1 = Math.floor(music_curr / 60);
-    let sec1 = Math.floor(music_curr % 60);
-    if (sec1 < 10) {
-      sec1 = `0${sec1}`;
-    }
-
-    currentStart.innerText = `${min1}:${sec1}`;
-
-    // bar
-    let progressbar = parseInt((music.currentTime / music.duration) * 100);
-    seek.value = progressbar;
-    let seekbar = seek.value;
-
-    // Giá trị trung gian
-    let currentSeekbar = parseInt(bar2.style.width) || 0;
-
-    // Tính toán khoảng cách di chuyển
-    let distance = seekbar - currentSeekbar;
-    let step = Math.abs(distance) / 10; // Chia khoảng cách thành 10 bước
-
-    // Xác định hướng di chuyển
-    let direction = distance > 0 ? 1 : -1;
-
-    // Cập nhật vị trí và độ dài
-    function updateSeekbar() {
-      currentSeekbar += step * direction;
-
-      if (
-        (direction === 1 && currentSeekbar >= seekbar) ||
-        (direction === -1 && currentSeekbar <= seekbar)
-      ) {
-        currentSeekbar = seekbar;
-      } else {
-        requestAnimationFrame(updateSeekbar);
-      }
-
-      bar2.style.width = `${currentSeekbar}%`;
-      dot.style.left = `${currentSeekbar}%`;
-    }
-
-    updateSeekbar();
-
-    //skip bar
-    seek.addEventListener("change", () => {
-      music.currentTime = (seek.value * music.duration) / 100;
-    });
-
-    music.addEventListener("ended", () => {
-      masterPlay.src = "/img/pause.png";
-      masterPlay.src = "/img/play.png";
-      wave.classList.remove("active2");
-    });
-  });
-});
-
-next.addEventListener("click", () => {
-  if (songId === 2) {
-    songId = songId;
-  } else {
-    songId = songId + 1;
-  }
-
-  music.pause();
-  music = new Audio(getSongById(songId));
-  music.play();
-  music.addEventListener("timeupdate", () => {
-    //time
-    let music_curr = music.currentTime;
-
-    let music_dur = music.duration;
-
-    let min = Math.floor(music_dur / 60);
-    let sec = Math.floor(music_dur % 60);
-    if (sec < 10) {
-      sec = `0${sec}`;
-    }
-    currentEnd.innerText = `${min}:${sec}`;
-
-    let min1 = Math.floor(music_curr / 60);
-    let sec1 = Math.floor(music_curr % 60);
-    if (sec1 < 10) {
-      sec1 = `0${sec1}`;
-    }
-
-    currentStart.innerText = `${min1}:${sec1}`;
-
-    // bar
-    let progressbar = parseInt((music.currentTime / music.duration) * 100);
-    seek.value = progressbar;
-    let seekbar = seek.value;
-
-    // Giá trị trung gian
-    let currentSeekbar = parseInt(bar2.style.width) || 0;
-
-    // Tính toán khoảng cách di chuyển
-    let distance = seekbar - currentSeekbar;
-    let step = Math.abs(distance) / 10; // Chia khoảng cách thành 10 bước
-
-    // Xác định hướng di chuyển
-    let direction = distance > 0 ? 1 : -1;
-
-    // Cập nhật vị trí và độ dài
-    function updateSeekbar() {
-      currentSeekbar += step * direction;
-
-      if (
-        (direction === 1 && currentSeekbar >= seekbar) ||
-        (direction === -1 && currentSeekbar <= seekbar)
-      ) {
-        currentSeekbar = seekbar;
-      } else {
-        requestAnimationFrame(updateSeekbar);
-      }
-
-      bar2.style.width = `${currentSeekbar}%`;
-      dot.style.left = `${currentSeekbar}%`;
-    }
-
-    updateSeekbar();
-
-    //skip bar
-    seek.addEventListener("change", () => {
-      music.currentTime = (seek.value * music.duration) / 100;
-    });
-
-    music.addEventListener("ended", () => {
-      masterPlay.src = "/img/pause.png";
-      masterPlay.src = "/img/play.png";
-      wave.classList.remove("active2");
-    });
-  });
-});
-
-
+            // Make an AJAX request to retrieve the updated PlaySong section HTML based on the selected song ID
+            $.ajax({
+                url: "/playSong/" + songId,
+                type: "GET",
+                success: function(response) {
+                    console.log("AJAX request successful. Response:", response);
+                    $("#play-song").html(response); // Replace the HTML content inside the #play-song div with the updated HTML
+                },
+                error: function(xhr, status, error) {
+                    console.log("AJAX request error:", error); // Log any errors that occur during the AJAX request
+                }
+            });
+        }
     </script>
+
 </div>
 </body>
 
