@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -28,6 +31,24 @@ public class MusicController {
     @RequestMapping(value = "/home")
     public String getNavigationBar(Model model) {
         List<Song> songs = songRepository.findAll();
+
+        List<String> songTitles = new ArrayList<>();
+        for (Song song : songs) {
+            String songTitle = song.getSong_title();
+            if (songTitle != null) {
+                songTitles.add(songTitle);
+            }
+        }
+        ObjectMapper objectMapper = new ObjectMapper();
+        String songTitlesJson;
+        try {
+            songTitlesJson = objectMapper.writeValueAsString(songTitles);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            songTitlesJson = "[]"; // Default empty array if conversion fails
+        }
+
+        model.addAttribute("songTitlesJson", songTitlesJson);
         List<Singer> singers = singerRepository.findAll();
         Collections.shuffle(songs);
         List<Song> randomSongs = songs.subList(0, Math.min(songs.size(), 5));

@@ -87,7 +87,7 @@
     <!-- the part of PlaySong-->
     <div class="play">
         <!-- enter song infor here to play that song-->
-        <p id="songId" >0</p>
+        <p id="play-id" ></p>
 
         <div class="wave">
             <div class="wave1"></div>
@@ -95,12 +95,12 @@
             <div class="wave1"></div>
             <div class="wave1"></div>
         </div>
-        <img src=""
+        <img id="play-img" src=""
              alt="">
 
         <div class="play-title">
-            <p class="name" ></p>
-            <p class="artist" ></p>
+            <p id="play-name" ></p>
+            <p id="play-singer" ></p>
         </div>
 
         <div class="buttons">
@@ -133,23 +133,11 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include the songs data in a JavaScript variable -->
     <script>
-        function changeSong(songId) {
-            console.log("Change song function called with ID:", songId);
 
-            // Make an AJAX request to retrieve the updated PlaySong section HTML based on the selected song ID
-            $.ajax({
-                url: "/playSong/" + songId,
-                type: "GET",
-                success: function(response) {
-                    console.log("AJAX request successful. Response:", response);
-                    $("#play-song").html(response); // Replace the HTML content inside the #play-song div with the updated HTML
-                },
-                error: function(xhr, status, error) {
-                    console.log("AJAX request error:", error); // Log any errors that occur during the AJAX request
-                }
-            });
-        }
+    </script>
+    <script>
     </script>
     <script src="/js/PlaySong.js"></script>
 
