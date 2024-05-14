@@ -7,8 +7,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import SE2.MusicWebApp.model.User;
-import SE2.MusicWebApp.repository.UserRepository;
+import com.Se2.MusicPlatform.model.User;
+import com.Se2.MusicPlatform.repository.UserRepository;
 @RestController
 public class SignUpController {
 
