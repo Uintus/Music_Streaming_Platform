@@ -8,87 +8,49 @@
     <link rel="stylesheet" href="/fonts/fontawesome6.css">
     <link rel="stylesheet" href="/fonts/all.min.css">
     <link rel="shortcut icon" href="/img/logo-_1_.ico" type="image/x-icon">
-    <script src="/utility/SongDetailPageScript.js" defer></script>
 </head>
 
 <body>
 <div id="container">
     <!-- the part except PlaySong-->
     <div class="main">
-        <!-- navigate part-->
-        <div th:replace="fragments/NavigateBar :: navbar" class="navigate-bar"></div>
 
 
         <div class="main-content">
             <div class="title-container">
-                <h1 class="song-title">Fireflies</h1>
-                <p class="singer">Owl City</p>
+                <h1 class="song-title" th:text="${song.song_title}"></h1>
+                <p class="singer" th:text="${song.singer.name}"></p>
             </div>
             <div class="img-lyric-container">
                 <div class="song-img-with-soundTrack-container">
                     <img src="/img/soundTrack.png" class="soundTrack">
-                    <img src="/img/song_img.png" class="song-img">
+                    <img th:src="${song.image}" class="song-img">
                 </div>
                 <div class="lyric-wrapper">
                     <h1 class="lyric-header">Lyrics</h1>
-                    <div class="lyric-container"></div>
+                    <div class="lyric-container" ></div>
                 </div>
             </div>
         </div>
     </div>
 
 
-
-
-    <!-- the part of PlaySong-->
-    <div class="play">
-        <!-- enter song infor here to play that song-->
-        <p id="songId" >0</p>
-
-        <div class="wave">
-            <div class="wave1"></div>
-            <div class="wave1"></div>
-            <div class="wave1"></div>
-            <div class="wave1"></div>
-        </div>
-        <img src=""
-             alt="">
-
-        <div class="play-title">
-            <p class="name" ></p>
-            <p class="artist" ></p>
-        </div>
-
-        <div class="buttons">
-            <img src="/img/next-button.png" alt="" class="left" >
-            <img src="/img/play.png" alt="" class="mid" id="masterPlay">
-            <img src="/img/next-button.png" alt="" class="right" id="next">
-        </div>
-
-        <div class="play-bar">
-            <p class="time-start" id="currentStart">-:--</p>
-
-            <div class="bar">
-                <input type="range" class="duration" id="seek" min="0" value="0" max="100">
-                <div class="bar2" id="bar2"></div>
-                <div class="dot" ></div>
-            </div>
-
-            <p class="time" id="currentEnd">-:--</p>
-        </div>
-
-        <div class="items">
-            <a href="/lyrics" style="text-decoration: none; color: inherit">
-                <i class="fa-sharp fa-solid fa-list-ul"></i>
-            </a>
-            <a style="text-decoration: none; color: inherit">
-                <i class="fa-sharp fa-regular fa-circle-plus"></i>
-            </a>
-
-        </div>
-    </div>
-    <script src="/js/PlaySong.js"></script>
 </div>
+
+
+
+<script th:inline="javascript">
+    const lyricsContainer = document.querySelector('.lyric-container');
+    const lyricString = [[${song.lyric}]]
+const lyrics = lyricString.split('/');
+lyrics.forEach((line)=>{
+    const lyricElement = document.createElement('p');
+    lyricElement.classList.add('lyric-line');
+    lyricElement.textContent = line;
+
+    lyricsContainer.appendChild(lyricElement);
+})
+</script>
 </body>
 
 
