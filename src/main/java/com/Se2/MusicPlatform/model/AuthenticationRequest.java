@@ -4,8 +4,15 @@ public class AuthenticationRequest {
     
     private String name;
     private String password;
+    private Long Id;
+    public void setId(Long id) {
+        this.Id = id;
+    }
+    public Long getId() {
+        return Id;
+    }
     public String getName() {
-        return username;
+        return name;
     }
     public void setName(String name) {
         this.name = name;
@@ -15,7 +22,5 @@ public class AuthenticationRequest {
     }
     public void setPassword(String password) {
         this.password = password;
-    }
-    
-    
+    }    
 }
