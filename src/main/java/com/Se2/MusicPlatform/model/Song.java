@@ -8,10 +8,12 @@ public class Song {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "song_id", nullable = false)
     private Long song_id;
-    private String song_title;
+    private String songTitle;
     private String lyric;
     private String image;
     private String time;
+
+
 
     @ManyToOne
     @JoinColumn(name = "singer_id")
@@ -25,11 +27,11 @@ public class Song {
     }
 
     public String getSong_title() {
-        return song_title;
+        return songTitle;
     }
 
     public void setSong_title(String song_title) {
-        this.song_title = song_title;
+        this.songTitle = song_title;
     }
 
     public String getLyric() {

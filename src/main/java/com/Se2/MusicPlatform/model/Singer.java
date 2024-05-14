@@ -16,6 +16,14 @@ public class Singer {
     @OneToMany
     List<Song> songs;
 
+    public List<Song> getSongs() {
+        return songs;
+    }
+
+    public void setSongs(List<Song> songs) {
+        this.songs = songs;
+    }
+
     public Long getSinger_id() {
         return singer_id;
     }
