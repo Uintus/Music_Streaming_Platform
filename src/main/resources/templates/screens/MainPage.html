@@ -18,12 +18,12 @@
     <div class="main">
         <!-- navigate part-->
         <div class="navigate-bar">
-            <img src="/img/logo.png" >
-            <a class="home-navi" >
+            <img src="/img/logo.png">
+            <a class="home-navi">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="32" viewBox="0 0 48 50" fill="none">
                     <path
                             d="M17 47.0906H12.3333C7.17867 47.0906 3 42.5323 3 36.9096V20.8939C3 17.3338 4.70476 14.0323 7.49584 12.1871L19.1625 4.47423C22.1359 2.50859 25.8641 2.50859 28.8375 4.47423L40.5041 12.1871C43.2953 14.0323 45 17.3338 45 20.8939V36.9096C45 42.5323 40.8212 47.0906 35.6667 47.0906H31M17 47.0906V36.9096C17 32.6924 20.1339 29.2739 24 29.2739C27.8661 29.2739 31 32.6924 31 36.9096V47.0906M17 47.0906H31"
-                            stroke="#989A99" stroke-width="4.93" stroke-linecap="round" stroke-linejoin="round" />
+                            stroke="#989A99" stroke-width="4.93" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </a>
 
@@ -31,7 +31,7 @@
                 <i class="fa-sharp fa-regular fa-magnifying-glass"></i>
             </div>
 
-            <a class="playlist-navi" >
+            <a class="playlist-navi">
                 <i class="fa-sharp fa-solid fa-list-music"></i>
             </a>
 
@@ -45,94 +45,89 @@
         </div>
 
 
-
-
         <div id="content">
 
         </div>
 
 
+    </div>
+</div>
+<!-- the part of PlaySong-->
+<div class="play">
 
+    <div class="wave">
+        <div class="wave1"></div>
+        <div class="wave1"></div>
+        <div class="wave1"></div>
+        <div class="wave1"></div>
+    </div>
+    <img id="play-image" src=""
+         alt="">
+
+    <div class="play-title">
+        <p id="play-name"></p>
+        <p id="play-singer"></p>
+    </div>
+
+    <div class="buttons">
+        <img src="/img/next-button.png" alt="" class="left">
+        <img src="/img/play.png" alt="" class="mid" id="masterPlay">
+        <img src="/img/next-button.png" alt="" class="right" id="next">
+    </div>
+
+    <div class="play-bar">
+        <p class="time-start" id="currentStart">-:--</p>
+
+        <div class="bar">
+            <input type="range" class="duration" id="seek" min="0" value="0" max="100">
+            <div class="bar2" id="bar2"></div>
+            <div class="dot"></div>
+        </div>
+
+        <p class="time" id="currentEnd">-:--</p>
+    </div>
+
+    <div class="items">
+        <a style="text-decoration: none; color: inherit" id="playlist-nav">
+            <i class="fa-sharp fa-solid fa-list-ul"></i>
+        </a>
+        <a style="text-decoration: none; color: inherit">
+            <i class="fa-sharp fa-regular fa-circle-plus"></i>
+        </a>
 
     </div>
 </div>
-    <!-- the part of PlaySong-->
-    <div class="play">
-
-        <div class="wave">
-            <div class="wave1"></div>
-            <div class="wave1"></div>
-            <div class="wave1"></div>
-            <div class="wave1"></div>
-        </div>
-        <img id="play-image" src=""
-             alt="">
-
-        <div class="play-title">
-            <p id="play-name"></p>
-            <p id="play-singer"></p>
-        </div>
-
-        <div class="buttons">
-            <img src="/img/next-button.png" alt="" class="left">
-            <img src="/img/play.png" alt="" class="mid" id="masterPlay">
-            <img src="/img/next-button.png" alt="" class="right" id="next">
-        </div>
-
-        <div class="play-bar">
-            <p class="time-start" id="currentStart">-:--</p>
-
-            <div class="bar">
-                <input type="range" class="duration" id="seek" min="0" value="0" max="100">
-                <div class="bar2" id="bar2"></div>
-                <div class="dot"></div>
-            </div>
-
-            <p class="time" id="currentEnd">-:--</p>
-        </div>
-
-        <div class="items">
-            <a style="text-decoration: none; color: inherit" id="playlist-nav">
-                <i class="fa-sharp fa-solid fa-list-ul"></i>
-            </a>
-            <a style="text-decoration: none; color: inherit" >
-                <i class="fa-sharp fa-regular fa-circle-plus"></i>
-            </a>
-
-        </div>
-    </div>
 
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        function getAllSongs(callback) {
-            $.ajax({
-                url: "/allSongs",
-                type: "GET",
-                dataType: "json",
-                success: function(response) {
-                    console.log("AJAX request successful. Response:", response);
-                    callback(response); // Invoke the callback function with the response data
-                },
-                error: function(xhr, status, error) {
-                    console.log("AJAX request error:", error); // Log any errors that occur during the AJAX request
-                }
-            });
-        }
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function getAllSongs(callback) {
+        $.ajax({
+            url: "/allSongs",
+            type: "GET",
+            dataType: "json",
+            success: function(response) {
+                console.log("AJAX request successful. Response:", response);
+                callback(response); // Invoke the callback function with the response data
+            },
+            error: function(xhr, status, error) {
+                console.log("AJAX request error:", error); // Log any errors that occur during the AJAX request
+            }
+        });
+    }
 
-function changeSong(songId) {
-    getAllSongs(function(allSongs) {
-        // Use the allSongs data here
-        var song = allSongs[songId]
-        console.log("Change song function called with ID:", songId);
-        $("#play-name").text(song.song_title);
-        $("#play-singer").text(song.singer.name);
-        $("#play-image").attr("src", song.image);
-    });
-}
-    </script>
-    <script src="/utility/PlaySong.js"></script>
-    <script src="/utility/MainPage.js"></script>
+    function changeSong(songId) {
+        getAllSongs(function(allSongs) {
+            // Use the allSongs data here
+            var song = allSongs[songId];
+            $("#play-name").text(song.song_title);
+            $("#play-singer").text(song.singer.name);
+            $("#play-image").attr("src", song.image);
+        });
+    }
+</script>
+<script src="/utility/PlaySong.js"></script>
+<script src="/utility/MainPage.js"></script>
 
 </div>
 </body>
