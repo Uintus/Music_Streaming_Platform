@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.Se2.MusicPlatform.model.User;
+import com.Se2.MusicPlatform.model.Account;
 import com.Se2.MusicPlatform.repository.UserRepository;
 @RestController
 public class SignUpController {
