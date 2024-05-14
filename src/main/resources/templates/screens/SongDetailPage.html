@@ -41,7 +41,7 @@
 
 
     <!-- the part of PlaySong-->
-    <div th:replace="fragments/PlaySong :: play-song" class="play"></div>
+    <div th:replace="fragments/PlaySong :: play-song(song=${songs.get(0)})" class="play"></div>
 </div>
 </body>
 

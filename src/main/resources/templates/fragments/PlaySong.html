@@ -7,7 +7,7 @@
 <body>
 <div th:fragment="play-song(song)" class="play">
     <!-- enter song infor here to play that song-->
-    <p id="songId">${song.id}</p>
+    <p id="songId" th:text="${song.song_id}"></p>
 
     <div class="wave">
         <div class="wave1"></div>

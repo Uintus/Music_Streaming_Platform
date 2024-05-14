@@ -501,9 +501,10 @@ svg path:hover {
 }
 .play-title {
   /* border: 0.5px solid aliceblue; */
-  width: 230px;
+  width: 150px;
   display: flex;
   flex-direction: column;
+  margin-right: 80px;
 }
 
 .play-title .name {
@@ -534,7 +535,7 @@ svg path:hover {
   cursor: pointer;
   width: 25px;
   height: 25px;
-  transform:rotate(180deg)
+  transform: rotate(180deg)
 }
 .buttons .mid {
   cursor: pointer;
