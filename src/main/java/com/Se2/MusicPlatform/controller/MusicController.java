@@ -2,6 +2,7 @@ package com.Se2.MusicPlatform.controller;
 import com.Se2.MusicPlatform.model.*;
 import com.Se2.MusicPlatform.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -48,17 +49,11 @@ public class MusicController {
         return "screens/HomePage";
     }
 
-    @GetMapping("/playSong/{songId}")
-    public String getPlaySongSection(@PathVariable("songId") Long songId, Model model) {
-        Optional<Song> songOptional = songRepository.findById(songId);
-        if (songOptional.isPresent()) {
-            Song song = songOptional.get();
-            model.addAttribute("song", song);
-        } else {
-            // Handle the case where the song with the given id is not found
-            return "error";
-        }
-        return "fragments/PlaySong :: play-song";
+    @GetMapping("/allSongs")
+    @ResponseBody
+    public List<Song> getAllSongs() {
+        List<Song> songs = songRepository.findAll();
+        return songs;
     }
 
     @RequestMapping(value = "/signup")
