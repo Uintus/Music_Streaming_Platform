@@ -74,7 +74,9 @@ public class MusicController {
     @RequestMapping(value = "/playlist")
     public String getPlaylistPage(Model model) {
         Playlist playlist = playlistRepository.getById(0L);
+        List<Song> songs = songRepository.findAllByPlaylist_id(0L);
         model.addAttribute("playlist", playlist);
+        model.addAttribute("songs", songs);
         return "screens/PlaylistPage";
     }
 
