@@ -1,29 +1,24 @@
-"use strict";
+
 
 const songs = [
-  { id: 0, src: "/audio/Love_Story.mp3" },
-  { id: 0, src: "/audio/Cruel_Summer.mp3" },
-//  { id: 0, src: "" },
+  { id: 0, src: "/audio/Chungtakhongthuocvenhau.mp3" },
+  { id: 1, src: "/audio/Love_Story.mp3" },
+  { id: 2, src: "/audio/You_Me.mp3" },
+  { id: 3, src: "/audio/3D.mp3" },
+  { id: 4, src: "/audio/GODS.mp3" },
+  { id: 5, src: "/audio/Cruel_Summer.mp3" },
+  { id: 6, src: "/audio/Blank_Space.mp3" },
+  { id: 7, src: "/audio/Still_with_you.mp3" },
+  { id: 8, src: "/audio/Seven.mp3" },
+  { id: 9, src: "/audio/Solo.mp3" },
+  { id: 10, src: "/audio/Spot.mp3"" },
+  { id: 11, src: "/audio/Stitches.mp3" },
+  { id: 12, src: "/audio/meback.mp3" },
+  { id: 13, src: "/audio/Treat_you_better.mp3" },
+  { id: 14, src: "/audio/Attention.mp3" },
+  { id: 15, src: "/audio/Dangerously.mp3" },
+  { id: 16, src: "/audio/Howlong.mp3" },
 
-  { id: 1, src: "/audio/Solo.mp3" },
-  { id: 1, src: "/audio/Spot.mp3" },
-  { id: 1, src: "/audio/You_Me.mp3" },
-
-  { id: 2, src: "/audio/Seven.mp3" },
-//  { id: 2, src: "" },
-//  { id: 2, src: "" },
-//
-//  { id: 3, src: "" },
-//  { id: 3, src: "" },
-//  { id: 3, src: "" },
-//
-//  { id: 4, src: "" },
-//  { id: 4, src: "" },
-//  { id: 4, src: "" },
-//
-//  { id: 5, src: "" },
-//  { id: 5, src: "" },
-//  { id: 5, src: "" },
 ];
 
 const getSongById = (id) => {
@@ -32,34 +27,41 @@ const getSongById = (id) => {
       return songs[i].src;
     }
   }
-  return null; // Trả về null nếu không tìm thấy id trong mảng songs
+  return null; // Trả về null nếu không tìm thấy bài hát với id tương ứng
 };
 
-/** GET SONG FROM DATA 15 SONGS BY ID HERE!!!*/
-let songId = 1;
+/** GET SONG FROM DATA 15 SONGS */
+let songId=1;
+
 let music = new Audio(getSongById(songId));
 
 // play/pause
 let masterPlay = document.getElementById("masterPlay");
 let wave = document.getElementsByClassName("wave")[0];
+//skip song
+let back = document.getElementsByClassName("left")[0];
+let next = document.getElementById("next");
+
+let button = document.getElementsByClassName("buttons")[0]
+button.style = "";
 
 masterPlay.addEventListener("click", () => {
-  if (!songId){
+  if (!songId) {
+    // button.disabled = true;
     music.pause();
     masterPlay.src = "/img/play.png";
     wave.classList.remove("active2");
-  }
-  else if (music.paused || music.currentTime <= 0 ) {
+  } else if (music.paused || music.currentTime <= 0) {
+    button.disabled = false;
     music.play();
     masterPlay.src = "/img/pause.png";
     wave.classList.add("active2");
-  }else{
+  } else {
+    button.disabled = false;
     music.pause();
     masterPlay.src = "/img/play.png";
     wave.classList.remove("active2");
   }
-
-
 });
 
 let currentStart = document.getElementById("currentStart");
@@ -135,13 +137,9 @@ music.addEventListener("timeupdate", () => {
   });
 });
 
-//skip song
-let back = document.getElementsByClassName("left")[0];
-let next = document.getElementById("next");
-
 back.addEventListener("click", () => {
-  if (songId === 0) {
-    songId = songId;
+if (songId === 0) {
+    songId = 0;
   } else {
     songId = songId - 1;
   }
@@ -218,7 +216,7 @@ back.addEventListener("click", () => {
 });
 
 next.addEventListener("click", () => {
-  if (songId === 2) {
+if (songId === 16) {
     songId = songId;
   } else {
     songId = songId + 1;
@@ -294,3 +292,4 @@ next.addEventListener("click", () => {
     });
   });
 });
+
