@@ -31,10 +31,12 @@ const getSongById = (id) => {
 };
 
 /** GET SONG FROM DATA 15 SONGS */
-let songId=1;
+let viewId = $("#play-image").attr("alt");
 
+let songId = 1;
 
 let music = new Audio(getSongById(songId));
+
 
 // play/pause
 let masterPlay = document.getElementById("masterPlay");
@@ -47,13 +49,18 @@ let button = document.getElementsByClassName("buttons")[0]
 button.style = "";
 
 masterPlay.addEventListener("click", () => {
+if (viewId != $("#play-image").attr("alt")) {
+viewId = $("#play-image").attr("alt");
+songId = parseInt(viewId);
+music = new Audio(getSongById(songId));
+}
+
   if (!songId) {
     // button.disabled = true;
     music.pause();
     masterPlay.src = "/img/play.png";
     wave.classList.remove("active2");
   } else if (music.paused || music.currentTime <= 0) {
-    music = new Audio(getSongById(parseInt($("#play-image").attr("alt"))));
     button.disabled = false;
     music.play();
     masterPlay.src = "/img/pause.png";
@@ -145,6 +152,7 @@ if (songId === 0) {
   } else {
     songId = songId - 1;
   }
+  changeSong(songId);
 
   music.pause();
   music = new Audio(getSongById(songId));
@@ -223,6 +231,9 @@ if (songId === 16) {
   } else {
     songId = songId + 1;
   }
+
+  changeSong(songId);
+
 
   music.pause();
   music = new Audio(getSongById(songId));
