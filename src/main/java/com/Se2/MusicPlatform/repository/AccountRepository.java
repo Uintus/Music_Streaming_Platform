@@ -7,6 +7,5 @@ import com.Se2.MusicPlatform.model.Account;
 
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Long> {
-    Account findByAccountName(String account_name);
-    boolean existsByAccountName(String account_Name);
+
 }
