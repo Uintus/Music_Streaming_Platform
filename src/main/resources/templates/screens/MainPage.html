@@ -62,7 +62,7 @@
         <div class="wave1"></div>
     </div>
     <img id="play-image" src=""
-         alt="">
+         alt="0">
 
     <div class="play-title">
         <p id="play-name"></p>
@@ -125,7 +125,8 @@
             $("#play-image").attr("src", song.image);
             $("#play-image").attr("alt", songId);
 
-
+            songId = songId;
+            let music = new Audio(getSongById(songId));
         });
     }
 </script>

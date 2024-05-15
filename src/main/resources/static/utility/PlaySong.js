@@ -33,6 +33,7 @@ const getSongById = (id) => {
 /** GET SONG FROM DATA 15 SONGS */
 let songId=1;
 
+
 let music = new Audio(getSongById(songId));
 
 // play/pause
@@ -52,6 +53,7 @@ masterPlay.addEventListener("click", () => {
     masterPlay.src = "/img/play.png";
     wave.classList.remove("active2");
   } else if (music.paused || music.currentTime <= 0) {
+    music = new Audio(getSongById(parseInt($("#play-image").attr("alt"))));
     button.disabled = false;
     music.play();
     masterPlay.src = "/img/pause.png";
