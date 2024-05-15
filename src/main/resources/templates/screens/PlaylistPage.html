@@ -48,7 +48,7 @@
                             <p class="artist" th:text="${song.singer.name}"></p>
                             <p class="time" th:text="${song.time}"></p>
                             <div class="delete">
-                                <i class="fa-regular fa-trash-xmark"></i>
+                                <i class="fa-regular fa-trash-xmark" ></i>
                             </div>
                         </div>
                     </div>
@@ -94,25 +94,21 @@
     </div>
 
     <script>
-        function getAllPlaylists(callback) {
-          $.ajax({
-            url: "/allPlaylists",
-            type: "GET",
-            dataType: "json",
-            success: function(response) {
-              console.log("AJAX request successful. Response:", response);
-              callback(response); // Invoke the callback function with the response data
-            },
-            error: function(xhr, status, error) {
-              console.log("AJAX request error:", error); // Log any errors that occur during the AJAX request
-            }
-          });
-        }
-getAllPlaylists(function(response) {
-  // Handle the response data here
-  console.log("Received all playlists:", response);
-  // Perform any necessary operations with the retrieved playlists
-});
+        // Add an event listener to the delete icon
+        $(".list-song").on("click", ".fa-trash-xmark", function() {
+          // Get the song element and the playlist ID from the data attribute
+          var songElement = $(this).closest(".song");
+          var playlistId = $(this).data("playlist-id");
+
+          // Set the playlist ID to null
+          songElement.data("playlist-id", null);
+
+          // Perform any additional actions you need
+          // For example, you can remove the song from the UI or update the server
+
+          // Log the updated song element for testing
+          console.log("Updated song element:", songElement);
+        });
     </script>
 
 </div>
