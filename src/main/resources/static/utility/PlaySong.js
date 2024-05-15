@@ -48,12 +48,29 @@ let next = document.getElementById("next");
 let button = document.getElementsByClassName("buttons")[0]
 button.style = "";
 
+//check for current song
+setInterval(function() {
+  currValue = $("#play-image").attr("alt");
+
+  if (viewId != currValue) {
+    music.pause();
+    viewId = currValue;
+    songId = parseInt(viewId);
+    music = new Audio(getSongById(songId));
+    music.addEventListener("timeupdate", updateTime);
+
+    masterPlay.src = "/img/play.png";
+    wave.classList.remove("active2");
+  }
+}, 1);
+
 masterPlay.addEventListener("click", () => {
 if (viewId != $("#play-image").attr("alt")) {
 viewId = $("#play-image").attr("alt");
 songId = parseInt(viewId);
 
 music = new Audio(getSongById(songId));
+music.addEventListener("timeupdate", updateTime);
 }
 
   if (!songId) {
@@ -80,9 +97,7 @@ let seek = document.getElementById("seek");
 let bar2 = document.getElementById("bar2");
 let dot = document.getElementsByClassName("dot")[0];
 
-// Show time
-music.addEventListener("timeupdate", () => {
-  //time
+function updateTime() {
   let music_curr = music.currentTime;
 
   let music_dur = music.duration;
@@ -101,9 +116,6 @@ music.addEventListener("timeupdate", () => {
   }
 
   currentStart.innerText = `${min1}:${sec1}`;
-
-
-
 
   // bar
   let progressbar = parseInt((music.currentTime / music.duration) * 100);
@@ -149,7 +161,9 @@ music.addEventListener("timeupdate", () => {
     masterPlay.src = "/img/play.png";
     wave.classList.remove("active2");
   });
-});
+}
+// Show time
+music.addEventListener("timeupdate", updateTime);
 
 back.addEventListener("click", () => {
 if (songId === 0) {
