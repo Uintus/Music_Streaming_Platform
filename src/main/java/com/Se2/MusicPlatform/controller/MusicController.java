@@ -76,6 +76,7 @@ public class MusicController {
         return "screens/PlaylistPage";
     }
 
+
     @RequestMapping(value = "/search")
     public String getSearchPage
             (@RequestParam(value = "song_name", required = false) String name,

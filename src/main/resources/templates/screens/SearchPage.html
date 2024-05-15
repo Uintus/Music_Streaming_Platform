@@ -16,64 +16,35 @@
 <div id="container">
     <!-- the part except PlaySong-->
     <div class="main">
-        <!-- navigate part-->
-        <div class="navigate-bar">
-            <img src="/img/logo.png" alt="">
-            <div class="home-navi">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="32" viewBox="0 0 48 50" fill="none">
-                    <path
-                            d="M17 47.0906H12.3333C7.17867 47.0906 3 42.5323 3 36.9096V20.8939C3 17.3338 4.70476 14.0323 7.49584 12.1871L19.1625 4.47423C22.1359 2.50859 25.8641 2.50859 28.8375 4.47423L40.5041 12.1871C43.2953 14.0323 45 17.3338 45 20.8939V36.9096C45 42.5323 40.8212 47.0906 35.6667 47.0906H31M17 47.0906V36.9096C17 32.6924 20.1339 29.2739 24 29.2739C27.8661 29.2739 31 32.6924 31 36.9096V47.0906M17 47.0906H31"
-                            stroke="#989A99" stroke-width="4.93" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </div>
-
-
-            <div class="search-navi">
-                <i class="fa-sharp fa-regular fa-magnifying-glass"></i>
-            </div>
-
-
-            <div class="playlist-navi">
-                <i class="fa-sharp fa-solid fa-list-music"></i>
-            </div>
-
-
-            <div class="account">
-                <img src="https://i.pinimg.com/736x/4a/4c/29/4a4c29807499a1a8085e9bde536a570a.jpg" alt="">
-            </div>
-            <div class="logout">
-                <img src="/img/logout.png" alt="logut">
-            </div>
-
-
-        </div>
 
 
         <!-- Main part -->
         <div class="main-container">
             <div class="input-container">
                 <img src="/img/search.png" class="search-icon">
-                <input class="input-field" autocomplete="off" id="searchInput" th:value="${song_name}" placeholder="Search for song..." type="search">
+                <input class="input-field" autocomplete="off" id="searchInput" th:value="${song_name}"
+                       placeholder="Search for song..." type="search">
             </div>
             <div class="result-container">
                 <p class="result-header">Songs</p>
                 <div class="result-set">
-                    <a  th:href="'/song_detail/' + ${song.song_id}" th:each="song : ${songs}" style="text-decoration: none">
-                    <div class="song-result" >
-                        <div style="display: flex;">
-                            <img class="song-img" th:src="${song.image}" alt="song">
-                            <div class="title-and-artist-container">
+                    <a th:href="'/song_detail/' + ${song.song_id}" th:each="song : ${songs}"
+                       style="text-decoration: none">
+                        <div class="song-result">
+                            <div style="display: flex;">
+                                <img class="song-img" th:src="${song.image}" alt="song">
+                                <div class="title-and-artist-container">
 
-                                <p class="song-name" th:text="${song.song_title}"></p>
+                                    <p class="song-name" th:text="${song.song_title}"></p>
 
-                                <p class="song-artist" th:text="${song.singer.name}"></p>
+                                    <p class="song-artist" th:text="${song.singer.name}"></p>
+                                </div>
+                            </div>
+                            <div class="time-container">
+                                <img class="time-icon" src="/img/clock.png">
+                                <p class="time-of-song" th:text="${song.time}"></p>
                             </div>
                         </div>
-                        <div class="time-container">
-                            <img class="time-icon" src="/img/clock.png">
-                            <p class="time-of-song" th:text="${song.time}"></p>
-                        </div>
-                    </div>
                     </a>
                 </div>
             </div>
@@ -95,41 +66,6 @@
     </div>
 
 
-
-
-    <!-- the part of PlaySong-->
-    <div class="play">
-        <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/white-and-blue-rock-music-album-cover-design-template-669d6b733ca7b8e20734de8eea1e67ea_screen.jpg?ts=1561485914"
-             alt="">
-
-
-        <div class="play-title">
-            <p class="name">Fireflies</p>
-            <p class="artist">OwI City</p>
-        </div>
-
-
-        <div class="buttons">
-            <img src="/img/next-button.png" alt="" class="left">
-            <img src="/img/play.png" alt="" class="mid">
-            <img src="/img/next-button.png" alt="" class="right">
-        </div>
-
-
-        <div class="play-bar">
-            <p class="time-start">1:02</p>
-            <div class="duration"></div>
-            <p class="time">3:05</p>
-        </div>
-
-
-        <div class="items">
-            <i class="fa-sharp fa-solid fa-list-ul"></i>
-            <i class="fa-sharp fa-regular fa-circle-plus"></i>
-        </div>
-
-
-    </div>
 </div>
 
 <script>
@@ -146,7 +82,8 @@
             window.location.href = newUrl;
         })
     }
-    </script>
+
+</script>
 
 </body>
 

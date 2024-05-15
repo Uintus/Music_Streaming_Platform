@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let home = document.getElementsByClassName("home-navi")[0];
   let playlist = document.getElementsByClassName("playlist-navi")[0]
   let lyrics = document.getElementById("playlist-nav")
+  let search = document.getElementsByClassName("search-navi")[0]
 
 //   home.addEventListener("click", () => {});
 
@@ -44,10 +45,21 @@ document.addEventListener("DOMContentLoaded", function () {
       event.preventDefault();
 
           // Sử dụng fetch() để tải nội dung từ tệp HTML riêng biệt
-          fetch('/lyrics')
+          fetch('/song_detail/1')
               .then(response => response.text())
               .then(data => {
                   contentElement.innerHTML = data; // Gán nội dung vào phần tử gốc
               });
     });
+
+    search.addEventListener("click", function (event) {
+          event.preventDefault();
+
+              // Sử dụng fetch() để tải nội dung từ tệp HTML riêng biệt
+              fetch('/search')
+                  .then(response => response.text())
+                  .then(data => {
+                      contentElement.innerHTML = data; // Gán nội dung vào phần tử gốc
+                  });
+        });
 });
