@@ -11,7 +11,7 @@ const songs = [
   { id: 7, src: "/audio/Still_with_you.mp3" },
   { id: 8, src: "/audio/Seven.mp3" },
   { id: 9, src: "/audio/Solo.mp3" },
-  { id: 10, src: "/audio/Spot.mp3"" },
+  { id: 10, src: "/audio/Spot.mp3" },
   { id: 11, src: "/audio/Stitches.mp3" },
   { id: 12, src: "/audio/meback.mp3" },
   { id: 13, src: "/audio/Treat_you_better.mp3" },
