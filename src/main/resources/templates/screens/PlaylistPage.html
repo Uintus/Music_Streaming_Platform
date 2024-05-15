@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -26,7 +26,7 @@
                     </div>
                     <div class="playlist-infor">
                         <p class="playlist">Playlist</p>
-                        <p class="playlist-name">US & UK Chill Songs</p>
+                        <p class="playlist-name" th:text="${playlist.name}"></p>
                     </div>
 
                 </div>
@@ -40,56 +40,15 @@
                     </div>
 
                     <div class="list-song">
-                        <div class="song">
-                            <p class="number">01</p>
-                            <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/white-and-blue-rock-music-album-cover-design-template-669d6b733ca7b8e20734de8eea1e67ea_screen.jpg?ts=1561485914" alt="">
-                            <p class="title">Fire</p>
-                            <p class="artist">BTS</p>
-                            <p class="time">2:03</p>
+                        <!-- Use a loop to render each song dynamically -->
+                        <div th:each="song, songInfo : ${songs}" class="song">
+                            <p class="number" th:text="${songInfo.index}"></p>
+                            <img th:src="${song.image}" alt="">
+                            <p class="title" th:text="${song.song_title}"></p>
+                            <p class="artist" th:text="${song.singer.name}"></p>
+                            <p class="time" th:text="${song.time}"></p>
                             <div class="delete">
-                                <i class="fa-regular fa-trash-xmark"></i>
-                            </div>
-
-                        </div>
-                        <div class="song">
-                            <p class="number">01</p>
-                            <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/white-and-blue-rock-music-album-cover-design-template-669d6b733ca7b8e20734de8eea1e67ea_screen.jpg?ts=1561485914" alt="">
-                            <p class="title">Fire</p>
-                            <p class="artist">BTS</p>
-                            <p class="time">2:03</p>
-                            <div class="delete">
-                                <i class="fa-regular fa-trash-xmark"></i>
-                            </div>
-
-                        </div>
-                        <div class="song">
-                            <p class="number">01</p>
-                            <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/white-and-blue-rock-music-album-cover-design-template-669d6b733ca7b8e20734de8eea1e67ea_screen.jpg?ts=1561485914" alt="">
-                            <p class="title">Fire</p>
-                            <p class="artist">BTS</p>
-                            <p class="time">2:03</p>
-                            <div class="delete">
-                                <i class="fa-regular fa-trash-xmark"></i>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <p class="number">01</p>
-                            <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/white-and-blue-rock-music-album-cover-design-template-669d6b733ca7b8e20734de8eea1e67ea_screen.jpg?ts=1561485914" alt="">
-                            <p class="title">Fire</p>
-                            <p class="artist">BTS</p>
-                            <p class="time">2:03</p>
-                            <div class="delete">
-                                <i class="fa-regular fa-trash-xmark"></i>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <p class="number">01</p>
-                            <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/white-and-blue-rock-music-album-cover-design-template-669d6b733ca7b8e20734de8eea1e67ea_screen.jpg?ts=1561485914" alt="">
-                            <p class="title">Fire</p>
-                            <p class="artist">BTS</p>
-                            <p class="time">2:03</p>
-                            <div class="delete">
-                                <i class="fa-regular fa-trash-xmark"></i>
+                                <i class="fa-regular fa-trash-xmark" ></i>
                             </div>
                         </div>
                     </div>
@@ -106,27 +65,16 @@
                             <img src="/img/music-player.png" alt="" class="musicPls">
                         </div>
                         <div class="list">
-                            <div class="pls-one">
-                                <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/white-and-blue-rock-music-album-cover-design-template-669d6b733ca7b8e20734de8eea1e67ea_screen.jpg?ts=1561485914" alt="">
-                                <p>My music</p>
-                                <div class="delete">
-                                    <i class="fa-regular fa-trash-xmark"></i>
+                            <!-- Iterate over the playlists -->
+                            <th:block th:each="playlist : ${playlists}">
+                                <div class="pls-one">
+                                    <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/white-and-blue-rock-music-album-cover-design-template-669d6b733ca7b8e20734de8eea1e67ea_screen.jpg?ts=1561485914" alt="">
+                                    <p th:text="${playlist.name}"></p>
+                                    <div class="delete">
+                                        <i class="fa-regular fa-trash-xmark"></i>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="pls-one">
-                                <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/white-and-blue-rock-music-album-cover-design-template-669d6b733ca7b8e20734de8eea1e67ea_screen.jpg?ts=1561485914" alt="">
-                                <p>My music</p>
-                                <div class="delete">
-                                    <i class="fa-regular fa-trash-xmark"></i>
-                                </div>
-                            </div>
-                            <div class="pls-one">
-                                <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/white-and-blue-rock-music-album-cover-design-template-669d6b733ca7b8e20734de8eea1e67ea_screen.jpg?ts=1561485914" alt="">
-                                <p>My music</p>
-                                <div class="delete">
-                                    <i class="fa-regular fa-trash-xmark"></i>
-                                </div>
-                            </div>
+                            </th:block>
                         </div>
                     </div>
                     <div class="add">
@@ -145,7 +93,23 @@
         </div>
     </div>
 
+    <script>
+        // Add an event listener to the delete icon
+        $(".list-song").on("click", ".fa-trash-xmark", function() {
+          // Get the song element and the playlist ID from the data attribute
+          var songElement = $(this).closest(".song");
+          var playlistId = $(this).data("playlist-id");
 
+          // Set the playlist ID to null
+          songElement.data("playlist-id", null);
+
+          // Perform any additional actions you need
+          // For example, you can remove the song from the UI or update the server
+
+          // Log the updated song element for testing
+          console.log("Updated song element:", songElement);
+        });
+    </script>
 
 </div>
 </body>
