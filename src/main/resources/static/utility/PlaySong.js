@@ -153,10 +153,10 @@ if (songId === 0) {
     songId = songId - 1;
   }
   changeSong(songId);
+  viewId = $("#play-image").attr("alt");
 
   music.pause();
   music = new Audio(getSongById(songId));
-  music.play();
   music.addEventListener("timeupdate", () => {
     //time
     let music_curr = music.currentTime;
@@ -233,11 +233,11 @@ if (songId === 16) {
   }
 
   changeSong(songId);
+  viewId = $("#play-image").attr("alt");
 
 
   music.pause();
   music = new Audio(getSongById(songId));
-  music.play();
   music.addEventListener("timeupdate", () => {
     //time
     let music_curr = music.currentTime;
