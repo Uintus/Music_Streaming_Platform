@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -26,7 +26,7 @@
                     </div>
                     <div class="playlist-infor">
                         <p class="playlist">Playlist</p>
-                        <p class="playlist-name">US & UK Chill Songs</p>
+                        <p class="playlist-name" th:text="${playlist.name}"></p>
                     </div>
 
                 </div>
@@ -40,54 +40,13 @@
                     </div>
 
                     <div class="list-song">
-                        <div class="song">
-                            <p class="number">01</p>
-                            <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/white-and-blue-rock-music-album-cover-design-template-669d6b733ca7b8e20734de8eea1e67ea_screen.jpg?ts=1561485914" alt="">
-                            <p class="title">Fire</p>
-                            <p class="artist">BTS</p>
-                            <p class="time">2:03</p>
-                            <div class="delete">
-                                <i class="fa-regular fa-trash-xmark"></i>
-                            </div>
-
-                        </div>
-                        <div class="song">
-                            <p class="number">01</p>
-                            <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/white-and-blue-rock-music-album-cover-design-template-669d6b733ca7b8e20734de8eea1e67ea_screen.jpg?ts=1561485914" alt="">
-                            <p class="title">Fire</p>
-                            <p class="artist">BTS</p>
-                            <p class="time">2:03</p>
-                            <div class="delete">
-                                <i class="fa-regular fa-trash-xmark"></i>
-                            </div>
-
-                        </div>
-                        <div class="song">
-                            <p class="number">01</p>
-                            <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/white-and-blue-rock-music-album-cover-design-template-669d6b733ca7b8e20734de8eea1e67ea_screen.jpg?ts=1561485914" alt="">
-                            <p class="title">Fire</p>
-                            <p class="artist">BTS</p>
-                            <p class="time">2:03</p>
-                            <div class="delete">
-                                <i class="fa-regular fa-trash-xmark"></i>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <p class="number">01</p>
-                            <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/white-and-blue-rock-music-album-cover-design-template-669d6b733ca7b8e20734de8eea1e67ea_screen.jpg?ts=1561485914" alt="">
-                            <p class="title">Fire</p>
-                            <p class="artist">BTS</p>
-                            <p class="time">2:03</p>
-                            <div class="delete">
-                                <i class="fa-regular fa-trash-xmark"></i>
-                            </div>
-                        </div>
-                        <div class="song">
-                            <p class="number">01</p>
-                            <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/white-and-blue-rock-music-album-cover-design-template-669d6b733ca7b8e20734de8eea1e67ea_screen.jpg?ts=1561485914" alt="">
-                            <p class="title">Fire</p>
-                            <p class="artist">BTS</p>
-                            <p class="time">2:03</p>
+                        <!-- Use a loop to render each song dynamically -->
+                        <div th:each="song, songInfo : ${playlist.songs}" class="song">
+                            <p class="number" th:text="${songInfo.index}"></p>
+                            <img th:src="${song.image}" alt="">
+                            <p class="title" th:text="${song.song_title}"></p>
+                            <p class="artist" th:text="${song.singer.name}"></p>
+                            <p class="time" th:text="${song.time}"></p>
                             <div class="delete">
                                 <i class="fa-regular fa-trash-xmark"></i>
                             </div>
@@ -145,7 +104,27 @@
         </div>
     </div>
 
-
+    <script>
+        function getAllPlaylists(callback) {
+          $.ajax({
+            url: "/allPlaylists",
+            type: "GET",
+            dataType: "json",
+            success: function(response) {
+              console.log("AJAX request successful. Response:", response);
+              callback(response); // Invoke the callback function with the response data
+            },
+            error: function(xhr, status, error) {
+              console.log("AJAX request error:", error); // Log any errors that occur during the AJAX request
+            }
+          });
+        }
+getAllPlaylists(function(response) {
+  // Handle the response data here
+  console.log("Received all playlists:", response);
+  // Perform any necessary operations with the retrieved playlists
+});
+    </script>
 
 </div>
 </body>

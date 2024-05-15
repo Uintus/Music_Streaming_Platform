@@ -20,6 +20,9 @@ public class MusicController {
     @Autowired
     SingerRepository singerRepository;
 
+    @Autowired
+    PlaylistRepository playlistRepository;
+
 
     @RequestMapping(value = "/main")
     public String getMainPage(Model model){
@@ -69,8 +72,18 @@ public class MusicController {
     }
 
     @RequestMapping(value = "/playlist")
-    public String getPlaylistPage() {
+    public String getPlaylistPage(Model model) {
+        Playlist playlist = playlistRepository.getById(0L);
+        model.addAttribute("playlist", playlist);
         return "screens/PlaylistPage";
+    }
+
+    @GetMapping("/allPlaylists")
+    @ResponseBody
+    public List<Playlist> getAllPlaylists() {
+        // Assuming you have a service or data access layer to retrieve the playlists
+        List<Playlist> playlists = playlistRepository.findAll();
+        return playlists;
     }
 
     @RequestMapping(value = "/search")
