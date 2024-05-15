@@ -42,9 +42,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   lyrics.addEventListener("click", function (event) {
       event.preventDefault();
+      let currentlyPlayingSongId = 0;
+      currentlyPlayingSongId = $("#play-image").attr("alt");
 
           // Sử dụng fetch() để tải nội dung từ tệp HTML riêng biệt
-          fetch('/lyrics')
+          fetch('/song_detail/' + currentlyPlayingSongId)
               .then(response => response.text())
               .then(data => {
                   contentElement.innerHTML = data; // Gán nội dung vào phần tử gốc
