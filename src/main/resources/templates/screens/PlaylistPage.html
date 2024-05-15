@@ -65,27 +65,16 @@
                             <img src="/img/music-player.png" alt="" class="musicPls">
                         </div>
                         <div class="list">
-                            <div class="pls-one">
-                                <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/white-and-blue-rock-music-album-cover-design-template-669d6b733ca7b8e20734de8eea1e67ea_screen.jpg?ts=1561485914" alt="">
-                                <p>My music</p>
-                                <div class="delete">
-                                    <i class="fa-regular fa-trash-xmark"></i>
+                            <!-- Iterate over the playlists -->
+                            <th:block th:each="playlist : ${playlists}">
+                                <div class="pls-one">
+                                    <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/white-and-blue-rock-music-album-cover-design-template-669d6b733ca7b8e20734de8eea1e67ea_screen.jpg?ts=1561485914" alt="">
+                                    <p th:text="${playlist.name}"></p>
+                                    <div class="delete">
+                                        <i class="fa-regular fa-trash-xmark"></i>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="pls-one">
-                                <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/white-and-blue-rock-music-album-cover-design-template-669d6b733ca7b8e20734de8eea1e67ea_screen.jpg?ts=1561485914" alt="">
-                                <p>My music</p>
-                                <div class="delete">
-                                    <i class="fa-regular fa-trash-xmark"></i>
-                                </div>
-                            </div>
-                            <div class="pls-one">
-                                <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/white-and-blue-rock-music-album-cover-design-template-669d6b733ca7b8e20734de8eea1e67ea_screen.jpg?ts=1561485914" alt="">
-                                <p>My music</p>
-                                <div class="delete">
-                                    <i class="fa-regular fa-trash-xmark"></i>
-                                </div>
-                            </div>
+                            </th:block>
                         </div>
                     </div>
                     <div class="add">
