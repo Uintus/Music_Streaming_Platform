@@ -16,10 +16,30 @@ public class Song {
 
 
     @ManyToOne
+    @JoinColumn(name = "playlist_id")
+    private Playlist playlist;
+
+    @ManyToOne
     @JoinColumn(name = "singer_id")
     private Singer singer;
     public Long getSong_id() {
         return song_id;
+    }
+
+    public String getSongTitle() {
+        return songTitle;
+    }
+
+    public void setSongTitle(String songTitle) {
+        this.songTitle = songTitle;
+    }
+
+    public Playlist getPlaylist() {
+        return playlist;
+    }
+
+    public void setPlaylist(Playlist playlist) {
+        this.playlist = playlist;
     }
 
     public void setSong_id(Long song_id) {

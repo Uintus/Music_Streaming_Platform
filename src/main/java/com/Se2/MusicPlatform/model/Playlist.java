@@ -1,25 +1,23 @@
 package com.Se2.MusicPlatform.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
-@Table(name = "end_user")
-@Data
-@NoArgsConstructor
-public class User {
+public class Playlist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
-
     private String name;
-    private int age;
+
+    @ManyToOne
+    @JoinColumn(name = "account_id")
+    private Account account;
 
     @OneToMany
-    private List<Account> accounts;
+    private List<Song> songs;
 
     public Long getId() {
         return id;
@@ -37,19 +35,19 @@ public class User {
         this.name = name;
     }
 
-    public int getAge() {
-        return age;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
-    public List<Account> getAccounts() {
-        return accounts;
+    public List<Song> getSongs() {
+        return songs;
     }
 
-    public void setAccounts(List<Account> accounts) {
-        this.accounts = accounts;
+    public void setSongs(List<Song> songs) {
+        this.songs = songs;
     }
 }

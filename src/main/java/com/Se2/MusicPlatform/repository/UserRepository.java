@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import com.Se2.MusicPlatform.model.*;
 
 @Repository
-public interface UserRepository extends JpaRepository <User, Long> {
+public interface UserRepository extends JpaRepository <End_User, Long> {
 }
