@@ -218,6 +218,11 @@ body::-webkit-scrollbar {
   color: var(--secondary-color);
 }
 
+.delete i:hover {
+  font-size: 18px;
+  color: #F9406D;
+  cursor: pointer;
+}
 
 
 .right-part {

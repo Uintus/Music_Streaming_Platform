@@ -30,9 +30,8 @@ const getSongById = (id) => {
   return null; // Trả về null nếu không tìm thấy bài hát với id tương ứng
 };
 
-/** GET SONG FROM DATA 15 SONGS */
+/** GET SONG FROM DATA 15 SONGS HERE!!!*/
 let songId=1;
-
 let music = new Audio(getSongById(songId));
 
 // play/pause
