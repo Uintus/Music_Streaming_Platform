@@ -32,12 +32,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   playlist.addEventListener("click", function (event) {
     event.preventDefault();
-
-        // Sử dụng fetch() để tải nội dung từ tệp HTML riêng biệt
         fetch('/playlist')
             .then(response => response.text())
             .then(data => {
-                contentElement.innerHTML = data; // Gán nội dung vào phần tử gốc
+                contentElement.innerHTML = data;
             });
   });
 

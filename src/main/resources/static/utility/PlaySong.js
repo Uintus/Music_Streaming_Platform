@@ -52,6 +52,7 @@ masterPlay.addEventListener("click", () => {
 if (viewId != $("#play-image").attr("alt")) {
 viewId = $("#play-image").attr("alt");
 songId = parseInt(viewId);
+
 music = new Audio(getSongById(songId));
 }
 
@@ -79,6 +80,7 @@ let seek = document.getElementById("seek");
 let bar2 = document.getElementById("bar2");
 let dot = document.getElementsByClassName("dot")[0];
 
+// Show time
 music.addEventListener("timeupdate", () => {
   //time
   let music_curr = music.currentTime;
@@ -99,6 +101,9 @@ music.addEventListener("timeupdate", () => {
   }
 
   currentStart.innerText = `${min1}:${sec1}`;
+
+
+
 
   // bar
   let progressbar = parseInt((music.currentTime / music.duration) * 100);
