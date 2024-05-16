@@ -85,4 +85,5 @@ public class Song {
     public void setSinger(Singer singer) {
         this.singer = singer;
     }
+
 }
