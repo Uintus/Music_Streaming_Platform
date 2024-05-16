@@ -29,7 +29,7 @@
                 <p class="result-header">Songs</p>
                 <div class="result-set" id="result-set">
                     <a th:href="'/song_detail/' + ${song.song_id}" th:each="song : ${songs}"
-                       style="text-decoration: none">
+                       style="text-decoration: none; cursor: pointer">
                         <div class="song-result">
                             <div style="display: flex;">
                                 <img class="song-img" th:src="${song.image}" alt="song">
