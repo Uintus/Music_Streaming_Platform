@@ -1,8 +1,12 @@
 function usePopup() {
   $("#popup-container").css("display", "flex");
 };
+function usePopupChoose() {
+  $("#popup-container-choose").css("display", "flex");
+};
 function hidePopup() {
   $("#popup-container").css("display", "none");
+  $("#popup-container-choose").css("display", "flex");
 };
 
 function savePlaylist() {
@@ -34,7 +38,7 @@ function savePlaylist() {
 }
 
     function deleteSong(songId) {
-      fetch(`/song/delete/${songId}`, {
+      fetch(`/song/update/${songId}?playlistId=-1`, {
         method: 'GET', // Change the request method to GET
       })
         .then(response => {
@@ -47,6 +51,24 @@ function savePlaylist() {
         .catch(error => {
           console.error('Error deleting song:', error);
         });
+    }
+
+    function addSong(playlistId) {
+    if ($("#play-image").attr("alt") != "") {
+    let songId = parseInt($("#play-image").attr("alt"));
+          fetch(`/song/update/${songId}?playlistId=${playlistId}`, {
+            method: 'GET', // Change the request method to GET
+          })
+            .then(response => {
+              if (response.ok) {
+              } else {
+                console.error('Error adding song to playlist');
+              }
+            })
+            .catch(error => {
+              console.error('Error adding song to playlist:', error);
+            });
+    }
     }
 
         function deletePlaylist(playlistId) {
