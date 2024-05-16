@@ -1,20 +1,44 @@
-//let addPlaylist = document.getElementById('addPlaylist');
-//let bg = document.getElementsByClassName("main")[0];
-//[0];
-//let popup = document.getElementsByClassName("popup-container")[0];
-//[0];
-//
-//addPlaylist.addEventListener("click", () => {
-//  popup.style.display = "flex";
-//});
-//
-//document.getElementById("closeButton").addEventListener("click", function () {
-//  // Ẩn thẻ popup-container khi nhấn nút "X"
-//  popup.style.display = "none";
-//});
+function usePopup() {
+  $("#popup-container").css("display", "flex");
+};
+function usePopupChoose() {
+  $("#popup-container-choose").css("display", "flex");
+};
+function hidePopup() {
+  $("#popup-container").css("display", "none");
+  $("#popup-container-choose").css("display", "flex");
+};
+
+function savePlaylist() {
+    // Get the input values
+    const nameInput = $("#nameInput").val();
+    const imageInput = $("#imageInput").val();
+    // Call the function only if both inputs are not null
+    if (nameInput && imageInput) {
+        fetch(`/playlist/save?nameInput=${nameInput}&imageInput=${imageInput}`, {
+            method: 'GET',
+        })
+        .then(response => {
+            if (response.ok) {
+                location.reload();
+            } else {
+                console.error("Error creating playlist");
+            }
+        }).catch(error => {
+            console.error("Error creating playlist", error);
+        });
+    }
+
+    // Reset the input values
+    $("#nameInput").val("");
+    $("#imageInput").val("");
+
+    // Hide the popup
+    hidePopup();
+}
 
     function deleteSong(songId) {
-      fetch(`/song/delete/${songId}`, {
+      fetch(`/song/update/${songId}?playlistId=-1`, {
         method: 'GET', // Change the request method to GET
       })
         .then(response => {
@@ -28,3 +52,37 @@
           console.error('Error deleting song:', error);
         });
     }
+
+    function addSong(playlistId) {
+    if ($("#play-image").attr("alt") != "") {
+    let songId = parseInt($("#play-image").attr("alt"));
+          fetch(`/song/update/${songId}?playlistId=${playlistId}`, {
+            method: 'GET', // Change the request method to GET
+          })
+            .then(response => {
+              if (response.ok) {
+              } else {
+                console.error('Error adding song to playlist');
+              }
+            })
+            .catch(error => {
+              console.error('Error adding song to playlist:', error);
+            });
+    }
+    }
+
+        function deletePlaylist(playlistId) {
+          fetch(`/playlist/delete/${playlistId}`, {
+            method: 'GET', // Change the request method to GET
+          })
+            .then(response => {
+              if (response.ok) {
+                location.reload(); // Refresh the page after successful deletion
+              } else {
+                console.error('Error deleting playlist');
+              }
+            })
+            .catch(error => {
+              console.error('Error deleting playlist:', error);
+            });
+        }

@@ -39,11 +39,13 @@ public class MusicController {
     public String getNavigationBar(Model model) {
         List<Song> songs = songRepository.findAll();
         List<Singer> singers = singerRepository.findAll();
+        List<Playlist> playlists = playlistRepository.findAll();
         Collections.shuffle(songs);
         List<Song> randomSongs = songs.subList(0, Math.min(songs.size(), 5));
         Collections.shuffle(singers);
         List<Singer> randomSingers = singers.subList(0, Math.min(singers.size(), 5));
 
+        model.addAttribute("playlists", playlists);
         model.addAttribute("songs", randomSongs);
         model.addAttribute("singers", randomSingers);
 
@@ -91,19 +93,40 @@ public class MusicController {
         return playlists;
     }
 
-    @RequestMapping(value = "/update")
-    public String updateSong(Song song) {
-        songRepository.save(song);
-        return "screens/PlaylistPage";
-    }
-
-    @RequestMapping(value = "/song/delete/{id}", method = RequestMethod.GET)
-    public ResponseEntity<String> deleteSong(@PathVariable("id") Long id) {
+    @RequestMapping(value = "/song/update/{id}", method = RequestMethod.GET)
+    public ResponseEntity<String> deleteSong(@PathVariable("id") Long id,
+                                             @RequestParam("playlistId") Long playlistId) {
         Song song = songRepository.findById(id).orElse(null);
-        if (song != null) {
+        if (song != null && playlistId == -1) {
             song.setPlaylist(null);
             songRepository.save(song);
             return ResponseEntity.ok("Song deleted successfully");
+        } else if (song != null) {
+            song.setPlaylist(playlistRepository.getById(playlistId));
+            songRepository.save(song);
+            return ResponseEntity.ok("Song updated successfully");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @RequestMapping(value = "/playlist/save", method = RequestMethod.GET)
+    public ResponseEntity<String> savePlaylist(@RequestParam("nameInput") String nameInput,
+                                               @RequestParam("imageInput") String imageInput) {
+        Playlist playlist = new Playlist();
+        playlist.setName(nameInput);
+        playlist.setImage(imageInput);
+
+        playlistRepository.save(playlist);
+        return ResponseEntity.ok("Playlist created successfully");
+    }
+
+    @RequestMapping(value = "/playlist/delete/{playlistId}", method = RequestMethod.GET)
+    public ResponseEntity<String> deletePlaylist(@PathVariable("playlistId") Long playlistId) {
+        Playlist playlist = playlistRepository.findById(playlistId).orElse(null);
+        if (playlist != null) {
+            playlistRepository.delete(playlist);
+            return ResponseEntity.ok("Playlist deleted successfully");
         } else {
             return ResponseEntity.notFound().build();
         }
