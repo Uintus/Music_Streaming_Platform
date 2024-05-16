@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   playlist.addEventListener("click", function (event) {
     event.preventDefault();
-    fetch("/playlist")
+    fetch("/playlist/-1")
       .then((response) => response.text())
       .then((data) => {
         contentElement.innerHTML = data;

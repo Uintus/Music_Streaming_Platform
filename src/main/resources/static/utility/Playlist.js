@@ -12,8 +12,8 @@ function hidePopup() {
     $("#popup-container").css("display", "none");
     $("#popup-container-choose").css("display", "none");
 };
-function updatePlaylistPage() {
-    fetch("/playlist")
+function updatePlaylistPage(playlistId) {
+    fetch("/playlist/" + playlistId)
         .then((response) => response.text())
         .then((data) => {
             contentElement.innerHTML = data;
@@ -30,7 +30,7 @@ function savePlaylist() {
             })
             .then(response => {
                 if (response.ok) {
-                updatePlaylistPage();
+                updatePlaylistPage(-1);
                 } else {
                     console.error("Error creating playlist");
                 }

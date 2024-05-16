@@ -74,7 +74,7 @@
                         <div class="list">
                             <!-- Iterate over the playlists -->
                             <th:block th:each="playlist : ${playlists}">
-                                <div class="pls-one" th:attr="data-playlist-id=${playlist.id}">
+                                <div class="pls-one" th:attr="data-playlist-id=${playlist.id}" onclick="updatePlaylistPage(this.getAttribute('data-playlist-id'))">
                                     <img th:src="${playlist.image}"
                                          alt="">
                                     <p th:text="${playlist.name}"></p>

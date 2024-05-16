@@ -79,14 +79,16 @@ public class MusicController {
         return "screens/SongDetailPage";
     }
 
-    @RequestMapping(value = "/playlist")
-    public String getPlaylistPage(Model model) {
+    @RequestMapping(value = "/playlist/{id}")
+    public String getPlaylistPage(@PathVariable(value = "id") Long id, Model model) {
         List<Playlist> playlists = playlistRepository.findAll();
 
         // Retrieve the first playlist from the list
         Playlist playlist = null;
-        if (!playlists.isEmpty()) {
+        if (!playlists.isEmpty() && id == -1) {
             playlist = playlists.get(0);
+        } else if (!playlists.isEmpty()) {
+            playlist = playlistRepository.getById(id);
         }
 
         // Retrieve the songs for the first playlist
