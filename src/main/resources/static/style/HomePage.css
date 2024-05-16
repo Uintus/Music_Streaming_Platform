@@ -5,7 +5,7 @@
 }
 
 body {
-  width: 100%;
+  width: 120%;
   height: 100%;
   background-color: #161719;
   overflow-x: hidden;
@@ -21,7 +21,7 @@ body::-webkit-scrollbar {
 }
 
 .main {
-  width: 100%;
+  width: 120%;
   height: 660px;
   display: flex;
   flex-direction: row;
@@ -30,7 +30,7 @@ body::-webkit-scrollbar {
 
 .main-content {
   margin-top: 2%;
-  width: 100%;
+  width: 120%;
   height: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -729,7 +729,7 @@ body::-webkit-scrollbar {
 
 .main-content {
   margin-top: 2%;
-  width: 100%;
+  width: 115%;
   height: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -1125,7 +1125,8 @@ svg path:hover {
   margin-right: 18px;
 }
 .play-title {
-  /* border: 0.5px solid aliceblue; */
+  border: 0.5px solid aliceblue;
+  height: 60%;
   width: 150px;
   display: flex;
   flex-direction: column;

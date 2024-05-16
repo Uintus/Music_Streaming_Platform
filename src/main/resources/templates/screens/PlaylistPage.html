@@ -14,7 +14,7 @@
 <body>
 <div id="container">
     <!-- the part except PlaySong-->
-    <div class="main">
+
 
 
         <div class="main-content">
@@ -45,7 +45,11 @@
                             <p class="number" th:text="${songInfo.index}"></p>
                             <img th:src="${song.image}" alt="">
                             <p class="title" th:text="${song.song_title}"></p>
-                            <p class="artist" th:text="${song.singer.name}"></p>
+
+                            <div class="artist">
+                                <p th:text="${song.singer.name}"></p>
+                            </div>
+
                             <p class="time" th:text="${song.time}"></p>
                             <div class="delete">
                                 <i class="fa-regular fa-trash-xmark"></i>
@@ -110,7 +114,7 @@
             </div>
 
         </div>
-    </div>
+
 
     <script>
         // Add an event listener to the delete icon
@@ -128,6 +132,7 @@
           // Log the updated song element for testing
           console.log("Updated song element:", songElement);
         });
+
 
     </script>
 
@@ -150,8 +155,9 @@
         });
 
 
+
     </script>
-<!--    <script src="/utility/Playlist.js"></script>-->
+    <!--    <script src="/utility/Playlist.js"></script>-->
 
 </div>
 </body>
