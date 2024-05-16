@@ -42,13 +42,14 @@
                     <div class="list-song">
                         <!-- Use a loop to render each song dynamically -->
                         <div th:each="song, songInfo : ${songs}" class="song">
-                            <p class="number" th:text="${songInfo.index}"></p>
+                            <p class="number" th:text="${songInfo.index + 1}"></p>
                             <img th:src="${song.image}" alt="">
                             <p class="title" th:text="${song.song_title}"></p>
                             <p class="artist" th:text="${song.singer.name}"></p>
                             <p class="time" th:text="${song.time}"></p>
                             <div class="delete">
-                                <i class="fa-regular fa-trash-xmark"></i>
+                                <i class="fa-regular fa-trash-xmark" th:id="'delete-' + ${songInfo.index}"
+                                   th:attr="data-song-id=${song.song_id}" onclick="deleteSong(this.getAttribute('data-song-id'))"></i>
                             </div>
                         </div>
                     </div>
@@ -113,25 +114,6 @@
     </div>
 
     <script>
-        // Add an event listener to the delete icon
-        $(".list-song").on("click", ".fa-trash-xmark", function() {
-          // Get the song element and the playlist ID from the data attribute
-          var songElement = $(this).closest(".song");
-          var playlistId = $(this).data("playlist-id");
-
-          // Set the playlist ID to null
-          songElement.data("playlist-id", null);
-
-          // Perform any additional actions you need
-          // For example, you can remove the song from the UI or update the server
-
-          // Log the updated song element for testing
-          console.log("Updated song element:", songElement);
-        });
-
-    </script>
-
-    <script>
         let addPlaylist = document.getElementById('addPlaylist');
         let bg = document.getElementsByClassName("main")[0];
         [0];
@@ -154,6 +136,7 @@
     <!--    <script src="/utility/Playlist.js"></script>-->
 
 </div>
+
 </body>
 
 </html>

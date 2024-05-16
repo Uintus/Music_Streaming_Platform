@@ -91,6 +91,24 @@ public class MusicController {
         return playlists;
     }
 
+    @RequestMapping(value = "/update")
+    public String updateSong(Song song) {
+        songRepository.save(song);
+        return "screens/PlaylistPage";
+    }
+
+    @RequestMapping(value = "/song/delete/{id}", method = RequestMethod.GET)
+    public ResponseEntity<String> deleteSong(@PathVariable("id") Long id) {
+        Song song = songRepository.findById(id).orElse(null);
+        if (song != null) {
+            song.setPlaylist(null);
+            songRepository.save(song);
+            return ResponseEntity.ok("Song deleted successfully");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @RequestMapping(value = "/search")
     public String getSearchPage
             (@RequestParam(value = "song_name", required = false) String name,
