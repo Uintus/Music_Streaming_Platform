@@ -12,6 +12,8 @@ public class Playlist {
     private Long id;
     private String name;
 
+    private String image;
+
     @ManyToOne
     @JoinColumn(name = "account_id")
     private Account account;
@@ -49,5 +51,13 @@ public class Playlist {
 
     public void setSongs(List<Song> songs) {
         this.songs = songs;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
