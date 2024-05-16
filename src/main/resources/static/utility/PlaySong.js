@@ -195,3 +195,29 @@ if (songId === 16) {
 music.addEventListener("timeupdate", updateTime);
 });
 
+    function getAllSongs(callback) {
+        $.ajax({
+            url: "/allSongs",
+            type: "GET",
+            dataType: "json",
+            success: function(response) {
+                console.log("AJAX request successful. Response:", response);
+                callback(response); // Invoke the callback function with the response data
+            },
+            error: function(xhr, status, error) {
+                console.log("AJAX request error:", error); // Log any errors that occur during the AJAX request
+            }
+        });
+    }
+
+    function changeSong(songId) {
+        getAllSongs(function(allSongs) {
+            // Use the allSongs data here
+            var song = allSongs[songId];
+            $("#play-name").text(song.song_title);
+            $("#play-singer").text(song.singer.name);
+            $("#play-image").attr("src", song.image);
+            $("#play-image").attr("alt", songId);
+        });
+    }
+

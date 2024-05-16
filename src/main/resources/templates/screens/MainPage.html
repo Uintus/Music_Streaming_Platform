@@ -99,33 +99,6 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    function getAllSongs(callback) {
-        $.ajax({
-            url: "/allSongs",
-            type: "GET",
-            dataType: "json",
-            success: function(response) {
-                console.log("AJAX request successful. Response:", response);
-                callback(response); // Invoke the callback function with the response data
-            },
-            error: function(xhr, status, error) {
-                console.log("AJAX request error:", error); // Log any errors that occur during the AJAX request
-            }
-        });
-    }
-
-    function changeSong(songId) {
-        getAllSongs(function(allSongs) {
-            // Use the allSongs data here
-            var song = allSongs[songId];
-            $("#play-name").text(song.song_title);
-            $("#play-singer").text(song.singer.name);
-            $("#play-image").attr("src", song.image);
-            $("#play-image").attr("alt", songId);
-        });
-    }
-</script>
 
 <script src="/utility/PlaySong.js"></script>
 <script src="/utility/MainPage.js"></script>
