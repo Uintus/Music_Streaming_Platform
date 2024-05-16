@@ -14,7 +14,7 @@
 <body>
 <div id="container">
     <!-- the part except PlaySong-->
-    <div class="main">
+
 
 
         <div class="main-content">
@@ -45,7 +45,12 @@
                             <p class="number" th:text="${songInfo.index + 1}"></p>
                             <img th:src="${song.image}" alt="">
                             <p class="title" th:text="${song.song_title}"></p>
-                            <p class="artist" th:text="${song.singer.name}"></p>
+
+                            <div class="artist">
+                                <p  th:text="${song.singer.name}"></p>
+                            </div>
+
+
                             <p class="time" th:text="${song.time}"></p>
                             <div class="delete">
                                 <i class="fa-regular fa-trash-xmark" th:id="'delete-' + ${songInfo.index}"
@@ -111,7 +116,7 @@
             </div>
 
         </div>
-    </div>
+
 
     <script>
         let addPlaylist = document.getElementById('addPlaylist');
