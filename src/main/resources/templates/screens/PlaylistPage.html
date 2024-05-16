@@ -69,7 +69,7 @@
                             <!-- Iterate over the playlists -->
                             <th:block th:each="playlist : ${playlists}">
                                 <div class="pls-one">
-                                    <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/white-and-blue-rock-music-album-cover-design-template-669d6b733ca7b8e20734de8eea1e67ea_screen.jpg?ts=1561485914"
+                                    <img th:src="${playlist.image}"
                                          alt="">
                                     <p th:text="${playlist.name}"></p>
                                     <div class="delete">
@@ -104,7 +104,7 @@
                     <div class="box">
                         <input type="text" id="nameInput" placeholder="My Playlist">
                         <input type="text" id="imageInput" placeholder="Image's Link">
-                        <button id="submitButton">Save</button>
+                        <button id="submitButton" onclick="savePlaylist()">Save</button>
                     </div>
                 </div>
             </div>

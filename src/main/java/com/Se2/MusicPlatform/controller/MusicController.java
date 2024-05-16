@@ -109,6 +109,17 @@ public class MusicController {
         }
     }
 
+    @RequestMapping(value = "/playlist/save", method = RequestMethod.GET)
+    public ResponseEntity<String> savePlaylist(@RequestParam("nameInput") String nameInput,
+                                               @RequestParam("imageInput") String imageInput) {
+        Playlist playlist = new Playlist();
+        playlist.setName(nameInput);
+        playlist.setImage(imageInput);
+
+        playlistRepository.save(playlist);
+        return ResponseEntity.ok("Playlist created successfully");
+    }
+
     @RequestMapping(value = "/search")
     public String getSearchPage
             (@RequestParam(value = "song_name", required = false) String name,
