@@ -192,6 +192,7 @@ if (songId === 16) {
 
   music.pause();
   music = new Audio(getSongById(songId));
+  music.play();
 music.addEventListener("timeupdate", updateTime);
 });
 
