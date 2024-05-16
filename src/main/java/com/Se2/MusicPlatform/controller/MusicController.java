@@ -70,8 +70,14 @@ public class MusicController {
     @RequestMapping(value = "/song_detail/{id}")
     public String getSongDetailPage(@PathVariable(value = "id") Long id, Model model) {
         Song song = songRepository.getById(id);
-        System.out.println(song.getLyric());
+//        System.out.println(song.getLyric());
+        String[] lines = song.getLyric().split("/");
+        StringBuilder result = new StringBuilder();
+        for (String line : lines) {
+            result.append("<p class=\"lyric-line\">").append(line.trim()).append("</p>");
+        }
         model.addAttribute("song", song);
+        model.addAttribute("lyric", result);
         return "screens/SongDetailPage";
     }
 

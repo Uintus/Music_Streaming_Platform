@@ -28,13 +28,13 @@
                 </div>
                 <div class="lyric-wrapper">
                     <h1 class="lyric-header">Lyrics</h1>
-                    <div class="lyric-container" ></div>
+                    <div class="lyric-container" th:utext="${lyric}"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script >
+    <script th:inline="javascript">
     const lyricsContainer = document.querySelector('.lyric-container');
     const lyricString = [[${song.lyric}]]
     const lyrics = lyricString.split('/');
