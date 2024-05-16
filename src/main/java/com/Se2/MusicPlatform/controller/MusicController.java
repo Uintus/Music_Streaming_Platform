@@ -70,6 +70,7 @@ public class MusicController {
     @RequestMapping(value = "/song_detail/{id}")
     public String getSongDetailPage(@PathVariable(value = "id") Long id, Model model) {
         Song song = songRepository.getById(id);
+        System.out.println(song.getLyric());
         model.addAttribute("song", song);
         return "screens/SongDetailPage";
     }

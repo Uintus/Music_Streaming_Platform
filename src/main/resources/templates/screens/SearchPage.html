@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/fonts/fontawesome6.css">
     <link rel="stylesheet" href="/fonts/all.min.css">
     <link rel="shortcut icon" href="/img/logo-_1_.ico" type="image/x-icon">
-    <script src="script.js" defer></script>
+    <script src="/utility/SearchPage.js" defer></script>
 </head>
 
 <body>
@@ -23,56 +23,30 @@
             <div class="input-container">
                 <img src="/img/search.png" class="search-icon">
                 <input class="input-field" autocomplete="off" id="searchInput" th:value="${song_name}"
-                       placeholder="Search for song..." type="search">
+                       placeholder="Search for song..." type="text" >
             </div>
             <div class="result-container">
                 <p class="result-header">Songs</p>
-
-
-<!--                <div class="result-set">-->
-<!--                    <a th:href="'/song_detail/' + ${song.song_id}" th:each="song : ${songs}"-->
-<!--                       style="text-decoration: none">-->
-<!--                        <div class="song-result">-->
-<!--                            <div style="display: flex;">-->
-<!--                                <img class="song-img" th:src="${song.image}" alt="song">-->
-<!--                                <div class="title-and-artist-container">-->
-
-<!--                                    <p class="song-name" th:text="${song.song_title}"></p>-->
-
-<!--                                    <p class="song-artist" th:text="${song.singer.name}"></p>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <div class="time-container">-->
-<!--                                <img class="time-icon" src="/img/clock.png">-->
-<!--                                <p class="time-of-song" th:text="${song.time}"></p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </a>-->
-<!--                </div>-->
-
-                <div class="result-set">
-                    <a
+                <div class="result-set" id="result-set">
+                    <a th:href="'/song_detail/' + ${song.song_id}" th:each="song : ${songs}"
                        style="text-decoration: none">
                         <div class="song-result">
-                            <div >
-<!--                                <img class="song-img" th:src="${song.image}" alt="song">-->
+                            <div style="display: flex;">
+                                <img class="song-img" th:src="${song.image}" alt="song">
                                 <div class="title-and-artist-container">
 
-                                    <p class="song-name" >hdhdfhdfhdeyeyeryery</p>
+                                    <p class="song-name" th:text="${song.song_title}"></p>
 
-                                    <p class="song-artist" >dgdgdfgtyrtyytery</p>
+                                    <p class="song-artist" th:text="${song.singer.name}"></p>
                                 </div>
                             </div>
                             <div class="time-container">
                                 <img class="time-icon" src="/img/clock.png">
-                                <p class="time-of-song" >hihi</p>
+                                <p class="time-of-song" th:text="${song.time}"></p>
                             </div>
                         </div>
                     </a>
                 </div>
-
-
-
             </div>
             <div>
                 <p class="artist-header">Popular artist</p>
@@ -93,24 +67,12 @@
 
 
 </div>
-
 <script>
-    window.onload = function() {
         let input = document.getElementById("searchInput");
-        let value = input.value;
-        input.focus();
-        input.value = '';
-        input.value = value;
-
-        input.addEventListener("input", function(){
-            let song_name = this.value;
-            const newUrl = "/search?song_name=" + encodeURIComponent(song_name);
-            window.location.href = newUrl;
-        })
-    }
-
+    input.addEventListener("input", function() {
+        console.log("input changed");
+    });
 </script>
-
 </body>
 
 

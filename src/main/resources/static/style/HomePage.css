@@ -1128,7 +1128,6 @@ svg path:hover {
   margin-right: 18px;
 }
 .play-title {
-  border: 0.5px solid aliceblue;
   height: 60%;
   width: 150px;
   display: flex;
@@ -1264,6 +1263,19 @@ svg path:hover {
   cursor: pointer;
 }
 
+
+#play-name{
+    color: white;
+    margin: 0;
+    font-size: 18px;
+}
+
+#play-singer{
+    color: var(--secondary-color);
+    margin-top: 10px;
+    font-size: 10px;}
+
+
 /* Show popup when click add playlist*/
 .popup-container-choose {
   position: absolute;
@@ -1295,9 +1307,7 @@ svg path:hover {
   cursor: pointer;
 }
 .popup i:hover {
-
   font-size: 31px;
-
 }
 .box button {
 cursor: pointer;
