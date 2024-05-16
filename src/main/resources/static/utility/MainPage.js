@@ -75,7 +75,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   });
 
-
   // Lấy tất cả các phần tử <a> có thuộc tính data-song-id
   // Lấy tất cả các phần tử <a> có thuộc tính song-id
   var songLinks = document.querySelectorAll("a[song-id]");
@@ -83,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Lặp qua từng phần tử và truy cập giá trị song.song_id
   songLinks.forEach(function (songLink) {
     var songId2 = songLink.getAttribute("song-id");
-    // Sử dụng giá trị songId2 trong logic JavaScript của bạn
+    // Sử dụng giá trị songId2 trong logic JavaScript
 
     songLink.addEventListener("click", function (event) {
       event.preventDefault();

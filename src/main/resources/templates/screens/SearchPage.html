@@ -28,7 +28,9 @@
             <div class="result-container">
                 <p class="result-header">Songs</p>
                 <div class="result-set" id="result-set">
-                    <a th:href="'/song_detail/' + ${song.song_id}" th:each="song : ${songs}"
+                    <a th:attr="data-song-id=${song.song_id}"
+                       onclick="navigateSong(this.getAttribute('data-song-id'))"
+                       th:each="song : ${songs}"
                        style="text-decoration: none; cursor: pointer">
                         <div class="song-result">
                             <div style="display: flex;">
