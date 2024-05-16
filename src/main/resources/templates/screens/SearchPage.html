@@ -27,26 +27,52 @@
             </div>
             <div class="result-container">
                 <p class="result-header">Songs</p>
+
+
+<!--                <div class="result-set">-->
+<!--                    <a th:href="'/song_detail/' + ${song.song_id}" th:each="song : ${songs}"-->
+<!--                       style="text-decoration: none">-->
+<!--                        <div class="song-result">-->
+<!--                            <div style="display: flex;">-->
+<!--                                <img class="song-img" th:src="${song.image}" alt="song">-->
+<!--                                <div class="title-and-artist-container">-->
+
+<!--                                    <p class="song-name" th:text="${song.song_title}"></p>-->
+
+<!--                                    <p class="song-artist" th:text="${song.singer.name}"></p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="time-container">-->
+<!--                                <img class="time-icon" src="/img/clock.png">-->
+<!--                                <p class="time-of-song" th:text="${song.time}"></p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </div>-->
+
                 <div class="result-set">
-                    <a th:href="'/song_detail/' + ${song.song_id}" th:each="song : ${songs}"
+                    <a
                        style="text-decoration: none">
                         <div class="song-result">
-                            <div style="display: flex;">
-                                <img class="song-img" th:src="${song.image}" alt="song">
+                            <div >
+<!--                                <img class="song-img" th:src="${song.image}" alt="song">-->
                                 <div class="title-and-artist-container">
 
-                                    <p class="song-name" th:text="${song.song_title}"></p>
+                                    <p class="song-name" >hdhdfhdfhdeyeyeryery</p>
 
-                                    <p class="song-artist" th:text="${song.singer.name}"></p>
+                                    <p class="song-artist" >dgdgdfgtyrtyytery</p>
                                 </div>
                             </div>
                             <div class="time-container">
                                 <img class="time-icon" src="/img/clock.png">
-                                <p class="time-of-song" th:text="${song.time}"></p>
+                                <p class="time-of-song" >hihi</p>
                             </div>
                         </div>
                     </a>
                 </div>
+
+
+
             </div>
             <div>
                 <p class="artist-header">Popular artist</p>

@@ -29,28 +29,29 @@
                 <div class="lyric-wrapper">
                     <h1 class="lyric-header">Lyrics</h1>
                     <div class="lyric-container" ></div>
+<!--                    <div class="lyric-container" th:text="${song.lyric}"></div>-->
                 </div>
             </div>
         </div>
     </div>
 
-
-</div>
-
-
-
-<script th:inline="javascript">
+    <script >
     const lyricsContainer = document.querySelector('.lyric-container');
     const lyricString = [[${song.lyric}]]
-const lyrics = lyricString.split('/');
-lyrics.forEach((line)=>{
+    const lyrics = lyricString.split('/');
+    lyrics.forEach((line)=>{
     const lyricElement = document.createElement('p');
     lyricElement.classList.add('lyric-line');
     lyricElement.textContent = line;
 
     lyricsContainer.appendChild(lyricElement);
-})
-</script>
+    })
+    </script>
+</div>
+
+
+
+
 </body>
 
 

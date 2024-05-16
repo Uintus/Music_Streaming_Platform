@@ -1,71 +1,65 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
 
-<div id="container">
-    <!-- the part except PlaySong-->
-    <div class="main">
+<div class="main-content">
+    <!-- middle part-->
+    <div class="mid">
+        <div class="mid-top">
+            <!-- <img src="/img/taylor.jpeg" alt="singer"> -->
+            <img src="/img/taylor2.jpg" alt="singer">
+        </div>
 
-        <div class="main-content">
-            <!-- middle part-->
-            <div class="mid">
-                <div class="mid-top">
-                    <!-- <img src="/img/taylor.jpeg" alt="singer"> -->
-                    <img src="/img/taylor2.jpg" alt="singer">
+        <p class="mid-text">Popular Tracks</p>
+
+        <div class="mid-bottom">
+            <div th:each="song, songStatus : ${songs}" class="song">
+                <div class="number" th:text="${songStatus.index + 1}"></div>
+                <div class="song-img">
+                    <img class="img2" th:src="${song.image}" alt="singer">
                 </div>
-
-                <p class="mid-text">Popular Tracks</p>
-
-                <div class="mid-bottom">
-                    <div th:each="song, songStatus : ${songs}" class="song">
-                        <div class="number" th:text="${songStatus.index + 1}"></div>
-                        <div class="song-img">
-                            <img class="img2" th:src="${song.image}" alt="singer">
-                        </div>
-                        <div class="song-infor">
-                            <div class="song-name">
-                                <p th:text="${song.song_title}"></p>
-                            </div>
-                            <div class="song-artist">
-                                <p th:text="${song.singer.name}"></p>
-                            </div>
-                        </div>
-                        <div class="song-time">
-                            <img class="clock-img" src="/img/clock.png" alt="clock">
-                            <p class="time" th:text="${song.time}"></p>
-                        </div>
-                        <div class="song-play">
-                            <div class="song-play">
-                                <i id="play-btn" class="fa-light fa-circle-play" th:attr="data-song-id=${song.song_id}"
-                                   onclick="changeSong(this.getAttribute('data-song-id'))"></i>
-                            </div>
-                        </div>
+                <div class="song-infor">
+                    <div class="song-name">
+                        <p th:text="${song.song_title}"></p>
+                    </div>
+                    <div class="song-artist">
+                        <p th:text="${song.singer.name}"></p>
+                    </div>
+                </div>
+                <div class="song-time">
+                    <img class="clock-img" src="/img/clock.png" alt="clock">
+                    <p class="time" th:text="${song.time}"></p>
+                </div>
+                <div class="song-play">
+                    <div class="song-play">
+                        <i id="play-btn" class="fa-light fa-circle-play" th:attr="data-song-id=${song.song_id}"
+                           onclick="changeSong(this.getAttribute('data-song-id'))"></i>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
 
-            <!-- middle part-->
-            <div class="right">
-                <div class="right-top">
-                    <p>What's hot this weekend?</p>
-                </div>
+    <!-- middle part-->
+    <div class="right">
+        <div class="right-top">
+            <p>What's hot this weekend?</p>
+        </div>
 
-                <div class="line"></div>
+        <div class="line"></div>
 
-                <div class="right-bottom">
-                    <div class="rbottom-contain">
-                        <p>Trending Artists</p>
-                        <div class="artist-list">
-                            <div th:each="singer, singerStatus : ${singers}" class="artist">
-                                <div class="artist-img">
-                                    <img th:src="${singer.image}" alt="Artist's image">
-                                </div>
-                                <div class="artist-name">
-                                    <p th:text="${singer.name}"></p>
-                                </div>
-                                <div class="artist-number" th:text="${singerStatus.index + 1}"></div>
-                            </div>
+        <div class="right-bottom">
+            <div class="rbottom-contain">
+                <p>Trending Artists</p>
+                <div class="artist-list">
+                    <div th:each="singer, singerStatus : ${singers}" class="artist">
+                        <div class="artist-img">
+                            <img th:src="${singer.image}" alt="Artist's image">
                         </div>
+                        <div class="artist-name">
+                            <p th:text="${singer.name}"></p>
+                        </div>
+                        <div class="artist-number" th:text="${singerStatus.index + 1}"></div>
                     </div>
                 </div>
             </div>

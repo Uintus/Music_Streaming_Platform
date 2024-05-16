@@ -33,7 +33,7 @@ const getSongById = (id) => {
 /** GET SONG FROM DATA 15 SONGS */
 let viewId = $("#play-image").attr("alt");
 
-let songId = 1;
+let songId;
 
 let music = new Audio(getSongById(songId));
 

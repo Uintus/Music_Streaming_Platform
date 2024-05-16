@@ -28,12 +28,14 @@ body::-webkit-scrollbar {
   display: flex;
   flex-direction: row;
   overflow: hidden;
+
 }
+
 
 .main-content {
   margin-top: 2%;
-  width: 100%;
-  height: 100%;
+  width: 158%;
+  height: 660px;
   display: flex;
   justify-content: space-evenly;
   /* border: 0.5px solid aliceblue; */
@@ -169,7 +171,6 @@ body::-webkit-scrollbar {
   width: 0em; /* Đặt chiều rộng của thanh cuộn */
 }
 .song {
-  /* border: 0.5px solid aliceblue; */
   display: flex;
   flex-direction: row;
   height: 70px;
@@ -177,6 +178,7 @@ body::-webkit-scrollbar {
   align-items: center;
   margin-bottom: 15px;
   margin-top: 10px;
+  margin-left: -20px;
 }
 .song .number {
   color: white;
@@ -191,7 +193,6 @@ body::-webkit-scrollbar {
   margin-right: 10px;
 }
 .song .title {
-  /* border: 0.5px solid aliceblue; */
   width: 33%;
   color: white;
   font-size: 15px;
@@ -200,12 +201,14 @@ body::-webkit-scrollbar {
   margin-right: 25px;
 }
 .song .artist {
-  /* border: 0.5px solid aliceblue; */
   width: 25%;
+  margin-right: 40px;
+}
+
+.song .artist p {
   color: var(--secondary-color);
   font-size: 15px;
   font-family: Arial, Helvetica, sans-serif;
-  margin-right: 25px;
 }
 .song .time {
   color: var(--secondary-color);
@@ -216,6 +219,7 @@ body::-webkit-scrollbar {
 .delete i {
   font-size: 18px;
   color: var(--secondary-color);
+  margin-right: -12px;
 }
 
 .delete i:hover {
@@ -228,6 +232,7 @@ body::-webkit-scrollbar {
 .right-part {
   width: 30%;
   height: 100%;
+  margin-top: -19px
   /* border: 0.5px solid aliceblue; */
 }
 .right-top {
@@ -252,6 +257,7 @@ body::-webkit-scrollbar {
   display: flex;
   flex-direction: row;
   width: 90%;
+  margin-left: -30px;
   /* align-items: center;
   justify-content: center; */
 }
@@ -265,7 +271,8 @@ body::-webkit-scrollbar {
 .header-pls > img {
   width: 30px;
   height: 30px;
-  margin-left: 240px;
+  margin-left: 220px;
+  margin-top: 10px;
 }
 
 .content .list {
@@ -299,6 +306,7 @@ body::-webkit-scrollbar {
   color: white;
   width: 210px;
   margin-right: 45px;
+  margin-left: -10px;
 }
 .add {
   display: flex;
@@ -311,8 +319,8 @@ body::-webkit-scrollbar {
 .add i {
   color: white;
   font-size: 20px;
-  margin-right: 10px;
-}
+  margin-right: -30px;
+  }
 .add i:hover {
   color: var(--primary-color);
   /* font-size: 21px; */
@@ -389,13 +397,21 @@ body::-webkit-scrollbar {
 }
 
 .right-bottom {
+  height: 350px;
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
 }
 .right-bottom .song-img {
   width: 100%;
   height: 250px;
   border-radius: 20px;
   overflow: hidden;
+  margin-right: -3px;
+  margin-top: -20px;
+  border: 0.5px solid aliceblue;
 }
 .right-bottom .song-img > img {
   width: 100%;
