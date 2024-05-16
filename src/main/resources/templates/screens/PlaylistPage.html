@@ -74,13 +74,13 @@
                         <div class="list">
                             <!-- Iterate over the playlists -->
                             <th:block th:each="playlist : ${playlists}">
-                                <div class="pls-one">
+                                <div class="pls-one" th:attr="data-playlist-id=${playlist.id}">
                                     <img th:src="${playlist.image}"
                                          alt="">
                                     <p th:text="${playlist.name}"></p>
                                     <div class="delete">
                                         <i class="fa-regular fa-trash-xmark" th:id="'delete-' + ${playlist.id}"
-                                           th:attr="data-song-id=${playlist.id}" onclick="deletePlaylist(this.getAttribute('data-song-id'))"></i>
+                                           th:attr="data-playlist-id=${playlist.id}" onclick="deletePlaylist(this.getAttribute('data-playlist-id'))"></i>
                                     </div>
                                 </div>
                             </th:block>

@@ -2,7 +2,6 @@ package com.Se2.MusicPlatform.controller;
 import com.Se2.MusicPlatform.model.*;
 import com.Se2.MusicPlatform.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class MusicController {
@@ -78,20 +76,29 @@ public class MusicController {
     @RequestMapping(value = "/playlist")
     public String getPlaylistPage(Model model) {
         List<Playlist> playlists = playlistRepository.findAll();
-        Playlist playlist = playlistRepository.getById(0L);
-        List<Song> songs = songRepository.findAllByPlaylist_id(0L);
+
+        // Retrieve the first playlist from the list
+        Playlist playlist = null;
+        if (!playlists.isEmpty()) {
+            playlist = playlists.get(0);
+        }
+
+        // Retrieve the songs for the first playlist
+        List<Song> songs = new ArrayList<>();
+        if (playlist != null) {
+            songs = songRepository.findAllByPlaylist_id(playlist.getId());
+        }
+
         model.addAttribute("playlists", playlists);
         model.addAttribute("playlist", playlist);
         model.addAttribute("songs", songs);
         return "screens/PlaylistPage";
     }
 
-    @GetMapping("/allPlaylists")
-    @ResponseBody
-    public List<Playlist> getAllPlaylists() {
-        // Assuming you have a service or data access layer to retrieve the playlists
+    @RequestMapping(value = "/playlist/all")
+    public ResponseEntity<List<Playlist>> getAllPlaylists() {
         List<Playlist> playlists = playlistRepository.findAll();
-        return playlists;
+        return ResponseEntity.ok(playlists);
     }
 
     @RequestMapping(value = "/song/update/{id}", method = RequestMethod.GET)

@@ -75,8 +75,8 @@
                 <h2>Choose a Playlist</h2>
                 <ul>
                     <li th:each="playlist : ${playlists}">
-                        <button th:text="${playlist.name}" th:attr="data-song-id=${playlist.id}"
-                                onclick="addSong(this.getAttribute('data-song-id'))"></button>
+                        <button th:text="${playlist.name}" th:attr="data-playlist-id=${playlist.id}"
+                                onclick="addSong(this.getAttribute('data-playlist-id'))"></button>
                     </li>
                 </ul>
             </div>
