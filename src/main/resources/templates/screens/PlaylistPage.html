@@ -41,7 +41,8 @@
 
                     <div class="list-song">
                         <!-- Use a loop to render each song dynamically -->
-                        <div th:each="song, songInfo : ${songs}" class="song">
+                        <div th:each="song, songInfo : ${songs}" class="song" th:attr="data-song-id=${song.song_id}"
+                             onclick = "changeSong(this.getAttribute('data-song-id'))">
                             <p class="number" th:text="${songInfo.index + 1}"></p>
                             <img th:src="${song.image}" alt="">
                             <p class="title" th:text="${song.song_title}"></p>

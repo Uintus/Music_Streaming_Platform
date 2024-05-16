@@ -39,7 +39,7 @@ function savePlaylist() {
 
     function deleteSong(songId) {
       fetch(`/song/update/${songId}?playlistId=-1`, {
-        method: 'GET', // Change the request method to GET
+        method: 'GET',
       })
         .then(response => {
           if (response.ok) {
@@ -57,7 +57,7 @@ function savePlaylist() {
     if ($("#play-image").attr("alt") != "") {
     let songId = parseInt($("#play-image").attr("alt"));
           fetch(`/song/update/${songId}?playlistId=${playlistId}`, {
-            method: 'GET', // Change the request method to GET
+            method: 'GET',
           })
             .then(response => {
               if (response.ok) {
