@@ -176,72 +176,7 @@ if (songId === 0) {
 
   music.pause();
   music = new Audio(getSongById(songId));
-  music.addEventListener("timeupdate", () => {
-    //time
-    let music_curr = music.currentTime;
-
-    let music_dur = music.duration;
-
-    let min = Math.floor(music_dur / 60);
-    let sec = Math.floor(music_dur % 60);
-    if (sec < 10) {
-      sec = `0${sec}`;
-    }
-    currentEnd.innerText = `${min}:${sec}`;
-
-    let min1 = Math.floor(music_curr / 60);
-    let sec1 = Math.floor(music_curr % 60);
-    if (sec1 < 10) {
-      sec1 = `0${sec1}`;
-    }
-
-    currentStart.innerText = `${min1}:${sec1}`;
-
-    // bar
-    let progressbar = parseInt((music.currentTime / music.duration) * 100);
-    seek.value = progressbar;
-    let seekbar = seek.value;
-
-    // Giá trị trung gian
-    let currentSeekbar = parseInt(bar2.style.width) || 0;
-
-    // Tính toán khoảng cách di chuyển
-    let distance = seekbar - currentSeekbar;
-    let step = Math.abs(distance) / 10; // Chia khoảng cách thành 10 bước
-
-    // Xác định hướng di chuyển
-    let direction = distance > 0 ? 1 : -1;
-
-    // Cập nhật vị trí và độ dài
-    function updateSeekbar() {
-      currentSeekbar += step * direction;
-
-      if (
-        (direction === 1 && currentSeekbar >= seekbar) ||
-        (direction === -1 && currentSeekbar <= seekbar)
-      ) {
-        currentSeekbar = seekbar;
-      } else {
-        requestAnimationFrame(updateSeekbar);
-      }
-
-      bar2.style.width = `${currentSeekbar}%`;
-      dot.style.left = `${currentSeekbar}%`;
-    }
-
-    updateSeekbar();
-
-    //skip bar
-    seek.addEventListener("change", () => {
-      music.currentTime = (seek.value * music.duration) / 100;
-    });
-
-    music.addEventListener("ended", () => {
-      masterPlay.src = "/img/pause.png";
-      masterPlay.src = "/img/play.png";
-      wave.classList.remove("active2");
-    });
-  });
+music.addEventListener("timeupdate", updateTime);
 });
 
 next.addEventListener("click", () => {
@@ -257,71 +192,6 @@ if (songId === 16) {
 
   music.pause();
   music = new Audio(getSongById(songId));
-  music.addEventListener("timeupdate", () => {
-    //time
-    let music_curr = music.currentTime;
-
-    let music_dur = music.duration;
-
-    let min = Math.floor(music_dur / 60);
-    let sec = Math.floor(music_dur % 60);
-    if (sec < 10) {
-      sec = `0${sec}`;
-    }
-    currentEnd.innerText = `${min}:${sec}`;
-
-    let min1 = Math.floor(music_curr / 60);
-    let sec1 = Math.floor(music_curr % 60);
-    if (sec1 < 10) {
-      sec1 = `0${sec1}`;
-    }
-
-    currentStart.innerText = `${min1}:${sec1}`;
-
-    // bar
-    let progressbar = parseInt((music.currentTime / music.duration) * 100);
-    seek.value = progressbar;
-    let seekbar = seek.value;
-
-    // Giá trị trung gian
-    let currentSeekbar = parseInt(bar2.style.width) || 0;
-
-    // Tính toán khoảng cách di chuyển
-    let distance = seekbar - currentSeekbar;
-    let step = Math.abs(distance) / 10; // Chia khoảng cách thành 10 bước
-
-    // Xác định hướng di chuyển
-    let direction = distance > 0 ? 1 : -1;
-
-    // Cập nhật vị trí và độ dài
-    function updateSeekbar() {
-      currentSeekbar += step * direction;
-
-      if (
-        (direction === 1 && currentSeekbar >= seekbar) ||
-        (direction === -1 && currentSeekbar <= seekbar)
-      ) {
-        currentSeekbar = seekbar;
-      } else {
-        requestAnimationFrame(updateSeekbar);
-      }
-
-      bar2.style.width = `${currentSeekbar}%`;
-      dot.style.left = `${currentSeekbar}%`;
-    }
-
-    updateSeekbar();
-
-    //skip bar
-    seek.addEventListener("change", () => {
-      music.currentTime = (seek.value * music.duration) / 100;
-    });
-
-    music.addEventListener("ended", () => {
-      masterPlay.src = "/img/pause.png";
-      masterPlay.src = "/img/play.png";
-      wave.classList.remove("active2");
-    });
-  });
+music.addEventListener("timeupdate", updateTime);
 });
 
