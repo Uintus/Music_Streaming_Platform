@@ -48,3 +48,19 @@ function savePlaylist() {
           console.error('Error deleting song:', error);
         });
     }
+
+        function deletePlaylist(playlistId) {
+          fetch(`/playlist/delete/${playlistId}`, {
+            method: 'GET', // Change the request method to GET
+          })
+            .then(response => {
+              if (response.ok) {
+                location.reload(); // Refresh the page after successful deletion
+              } else {
+                console.error('Error deleting playlist');
+              }
+            })
+            .catch(error => {
+              console.error('Error deleting playlist:', error);
+            });
+        }

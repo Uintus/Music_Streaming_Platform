@@ -73,7 +73,8 @@
                                          alt="">
                                     <p th:text="${playlist.name}"></p>
                                     <div class="delete">
-                                        <i class="fa-regular fa-trash-xmark"></i>
+                                        <i class="fa-regular fa-trash-xmark" th:id="'delete-' + ${playlist.id}"
+                                           th:attr="data-song-id=${playlist.id}" onclick="deletePlaylist(this.getAttribute('data-song-id'))"></i>
                                     </div>
                                 </div>
                             </th:block>

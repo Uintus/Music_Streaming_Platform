@@ -120,6 +120,17 @@ public class MusicController {
         return ResponseEntity.ok("Playlist created successfully");
     }
 
+    @RequestMapping(value = "/playlist/delete/{playlistId}", method = RequestMethod.GET)
+    public ResponseEntity<String> deletePlaylist(@PathVariable("playlistId") Long playlistId) {
+        Playlist playlist = playlistRepository.findById(playlistId).orElse(null);
+        if (playlist != null) {
+            playlistRepository.delete(playlist);
+            return ResponseEntity.ok("Playlist deleted successfully");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
     @RequestMapping(value = "/search")
     public String getSearchPage
             (@RequestParam(value = "song_name", required = false) String name,
