@@ -41,7 +41,7 @@
 
                     <div class="list-song">
                         <!-- Use a loop to render each song dynamically -->
-                        <div th:each="song, songInfo : ${songs}" class="song" th:attr="data-song-id=${song.song_id}"
+                        <div th:each="song, songInfo : ${songs}" class="song" style = "cursor: pointer; " th:attr="data-song-id=${song.song_id}"
                              onclick = "changeSong(this.getAttribute('data-song-id'))">
                             <p class="number" th:text="${songInfo.index + 1}"></p>
                             <img th:src="${song.image}" alt="">
@@ -71,10 +71,12 @@
                             <p>Playlist</p>
                             <img src="/img/music-player.png" alt="" class="musicPls">
                         </div>
+
+
                         <div class="list">
                             <!-- Iterate over the playlists -->
                             <th:block th:each="playlist : ${playlists}">
-                                <div class="pls-one" th:attr="data-playlist-id=${playlist.id}" onclick="updatePlaylistPage(this.getAttribute('data-playlist-id'))">
+                                <div class="pls-one" th:attr="data-playlist-id=${playlist.id}" onclick="updatePlaylistPage(this.getAttribute('data-playlist-id'))" style = "cursor: pointer; ">
                                     <img th:src="${playlist.image}"
                                          alt="">
                                     <p th:text="${playlist.name}"></p>
@@ -85,6 +87,9 @@
                                 </div>
                             </th:block>
                         </div>
+
+
+
                     </div>
                     <div class="add">
                         <div >

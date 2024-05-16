@@ -15,20 +15,7 @@
         <img src="/img/radio.png" class="radio-img">
         <div class="eclipse"></div>
     </div>
-<!--    <form class="form-container" method="post" th:action="@{/j_spring_security_check}">-->
-<!--        <p class="form-header">Sign In</p>-->
-<!--        <div class="input-container">-->
-<!--            <img src="/img/user.png" class="icon">-->
-<!--            <input placeholder="Enter your name" type="text" name="username" class="user-input">-->
-<!--        </div>-->
-<!--        <div class="input-container">-->
-<!--            <img src="/img/key.png" class="icon">-->
-<!--            <input placeholder="Enter password" type="password" name="password" class="user-input">-->
-<!--        </div>-->
-<!--        <button class="submit-button" type="submit">Sign In</button>-->
-<!--        <p class="option-content">Do not have any account? <a href="/signup" class="login-signup-option">Sign up</a> here.</p>-->
-<!--    </form>-->
-    <form class="form-container" >
+    <form th:action="@{/j_spring_security_check}" class="form-container" method="post" >
         <p class="form-header">Sign In</p>
         <div class="input-container">
             <img src="/img/user.png" class="icon">
@@ -41,6 +28,19 @@
         <button class="submit-button" type="submit">Sign In</button>
         <p class="option-content">Do not have any account? <a href="/signup" class="login-signup-option">Sign up</a> here.</p>
     </form>
+<!--    <form class="form-container" >-->
+<!--        <p class="form-header">Sign In</p>-->
+<!--        <div class="input-container">-->
+<!--            <img src="/img/user.png" class="icon">-->
+<!--            <input placeholder="Enter your name" type="text" name="username" class="user-input">-->
+<!--        </div>-->
+<!--        <div class="input-container">-->
+<!--            <img src="/img/key.png" class="icon">-->
+<!--            <input placeholder="Enter password" type="password" name="password" class="user-input">-->
+<!--        </div>-->
+<!--        <button class="submit-button" type="submit">Sign In</button>-->
+<!--        <p class="option-content">Do not have any account? <a href="/signup" class="login-signup-option">Sign up</a> here.</p>-->
+<!--    </form>-->
 </div>
 </body>
 </html>
