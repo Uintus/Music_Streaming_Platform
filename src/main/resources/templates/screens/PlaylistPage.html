@@ -80,8 +80,8 @@
                         </div>
                     </div>
                     <div class="add">
-                        <div id="addPlaylist">
-                            <i class="fa-regular fa-plus"></i>
+                        <div >
+                            <i class="fa-regular fa-plus" id="addPlaylist" onclick="usePopup()"></i>
                         </div>
                         <p>Add Playlist</p>
                     </div>
@@ -96,14 +96,13 @@
                 </div>
             </div>
 
-
             <!-- PopUp-->
-            <div class="popup-container" style="display: none;">
-                <div class="popup">
-                    <i class="fa-duotone fa-circle-xmark" id="closeButton"
+            <div class="popup-container" style = "display : none;" id = "popup-container">
+                <div class="popup" id = "popup">
+                    <i class="fa-duotone fa-circle-xmark" id="closeButton" onclick="hidePopup()"
                        style="--fa-primary-color: #33c1c7; --fa-primary-opacity: 0.8; --fa-secondary-color: #e75558; --fa-secondary-opacity: 1;"></i>
                     <div class="box">
-                        <input type="text" id="nameInput" placeholder="My Playlist ">
+                        <input type="text" id="nameInput" placeholder="My Playlist">
                         <input type="text" id="imageInput" placeholder="Image's Link">
                         <button id="submitButton">Save</button>
                     </div>
@@ -112,29 +111,7 @@
 
         </div>
     </div>
-
-    <script>
-        let addPlaylist = document.getElementById('addPlaylist');
-        let bg = document.getElementsByClassName("main")[0];
-        [0];
-        let popup = document.getElementsByClassName("popup-container")[0];
-        [0];
-
-        addPlaylist.addEventListener("click", () => {
-          popup.style.display = "flex";
-        });
-
-        document.getElementById("closeButton").addEventListener("click", function () {
-        let popup = document.getElementsByClassName("popup-container")[0];
-        [0];
-          // Ẩn thẻ popup-container khi nhấn nút "X"
-          popup.style.display = "none";
-        });
-
-
-    </script>
-    <!--    <script src="/utility/Playlist.js"></script>-->
-
+    <script src="/utility/Playlist.js"></script>
 </div>
 
 </body>
