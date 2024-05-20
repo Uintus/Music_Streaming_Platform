@@ -33,6 +33,7 @@ public class MusicController {
     public String homePage(){
         return "redirect:/main";
     }
+
     @RequestMapping(value = "/home")
     public String getNavigationBar(Model model) {
         List<Song> songs = songRepository.findAll();

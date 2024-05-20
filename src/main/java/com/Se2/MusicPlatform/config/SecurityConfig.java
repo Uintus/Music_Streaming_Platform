@@ -79,8 +79,9 @@ public class SecurityConfig {
                 .formLogin(form -> form
                         .loginPage("/signin")
                         .permitAll()
-//                        .defaultSuccessUrl("/signin?success=true")
+//                      .defaultSuccessUrl("/signin?success=true")
                         .failureUrl("/signin?success=false")
+                        .defaultSuccessUrl("/main", true)
                         .loginProcessingUrl("/j_spring_security_check"))
                 .build();
     }
